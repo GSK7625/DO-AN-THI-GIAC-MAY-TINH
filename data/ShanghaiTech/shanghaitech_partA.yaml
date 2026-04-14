@@ -1,0 +1,6 @@
+path: C:\Users\Kien\Documents\GitHub\TGMT\data\ShanghaiTech
+train: part_A/agumented/images
+val: part_A/test_data/images
+nc: 1
+names:
+- head
