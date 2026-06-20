@@ -3,7 +3,7 @@
 Hệ thống tích hợp giám sát giao thông bằng thị giác máy tính (Computer Vision) kết hợp điều khiển tối ưu hóa đèn tín hiệu thông minh sử dụng Học Tăng Cường (Reinforcement Learning) trên nền tảng SUMO.
 
 ## 📌 Tổng Quan Dự Án
-Dự án được thực hiện bởi sinh viên **Đỗ Trung Kiên** nhằm mục tiêu xây dựng một giải pháp giao thông thông minh toàn diện gồm hai thành phần cốt lõi:
+Dự án được thực hiện bởi sinh viên nhằm mục tiêu xây dựng một giải pháp giao thông thông minh toàn diện gồm hai thành phần cốt lõi:
 1. **Hệ thống Thị giác máy tính (Computer Vision)**: Tự động nhận diện, theo dõi đa đối tượng (Multi-Object Tracking) và hiệu chỉnh góc nhìn camera để tính toán lưu lượng, quỹ đạo và vận tốc thực tế của các phương tiện giao thông từ video ghi hình.
 2. **Hệ thống Mô phỏng Giao thông (SUMO Simulation)**: Thử nghiệm kịch bản lưu thông thực tế và đánh giá hiệu năng các bộ điều khiển đèn giao thông thích ứng (Fixed-Time vs Q-Learning vs Deep Q-Learning) dựa trên hàng đợi và độ trễ trung bình.
 
@@ -47,7 +47,7 @@ Dự án được thực hiện bởi sinh viên **Đỗ Trung Kiên** nhằm m�
 │   └── *.xml / *.sumocfg / *.csv / *.png # Bản đồ, cấu hình SUMO và đồ thị kết quả
 │
 ├── weights/                              # Trọng số của mô hình học sâu
-│   └── best.pt                           # Trọng số YOLOv8 đã được huấn luyện
+│   └── best.pt                          
 │
 ├── requirements.txt                      # Danh sách các thư viện Python bắt buộc
 └── README.md                             # Tài liệu hướng dẫn dự án
@@ -89,9 +89,4 @@ Sau khi chạy xong, chương trình sẽ tự động:
 2. Vẽ và lưu các biểu đồ so sánh (`sumo_cv_delay_comparison.png`, `sumo_cv_speed_comparison.png`, v.v.).
 3. Tạo báo cáo tóm tắt hiệu suất trực quan ngay trong thư mục mô phỏng.
 
----
-
-## 📜 Giấy Phép & Bản Quyền
-Dự án được phân phối dưới dạng mã nguồn mở phục vụ mục đích nghiên cứu học tập:
-* Mô hình YOLOv8 tuân theo giấy phép **AGPL-3.0** từ Ultralytics.
-* Giao diện UI sử dụng **CustomTkinter** giấy phép MIT.
+--
