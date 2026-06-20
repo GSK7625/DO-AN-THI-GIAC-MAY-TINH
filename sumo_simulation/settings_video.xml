@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewsettings>
+    <viewport zoom="80" x="182" y="247" net="osm_cut.net.xml"/>
+    <delay value="80"/>
+    <decel-value value="1.0"/>
+    <lighting value="0"/>
+    <scheme name="real world"/>
+</viewsettings>

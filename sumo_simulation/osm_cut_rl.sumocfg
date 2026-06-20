@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="osm_cut.net.xml"/>
+        <route-files value="osm_cut_rl.rou.xml"/>
+        <additional-files value="osm_cut_rl.add.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="1000"/>
+        <step-length value="0.1"/>
+    </time>
+    <processing>
+        <!-- Teleport vehicles stuck longer than 120s to prevent permanent deadlock -->
+        <time-to-teleport value="120"/>
+
+        <!-- After 10s of waiting, ignore vehicles blocking the junction interior -->
+        <ignore-junction-blocker value="10"/>
+    </processing>
+</configuration>
