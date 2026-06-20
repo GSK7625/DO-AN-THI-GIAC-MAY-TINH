@@ -1,81 +1,97 @@
-## Welcome to SimJam Computer Vision Analytics (Open-Source)
+# Đồ Án Thị Giác Máy Tính & Mô Phỏng Giao Thông Thông Minh
 
-<p align="left">
-  <img src="https://img.shields.io/github/contributors/RoadwayVR/SimJamComputerVision?style=for-the-badge">
-  <img src="https://img.shields.io/github/forks/RoadwayVR/SimJamComputerVision?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/RoadwayVR/SimJamComputerVision?style=for-the-badge">
-  <img src="https://img.shields.io/github/issues/RoadwayVR/SimJamComputerVision?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/RoadwayVR/SimJamComputerVision?style=for-the-badge">
-  <a href="https://www.linkedin.com/in/ahmadmohammadi1441/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge">
-  </a>
-</p>
+Hệ thống tích hợp giám sát giao thông bằng thị giác máy tính (Computer Vision) kết hợp điều khiển tối ưu hóa đèn tín hiệu thông minh sử dụng Học Tăng Cường (Reinforcement Learning) trên nền tảng SUMO.
 
-## Introduction
-Transportation planning and traffic operations studies increasingly rely on **video data** (CCTV, drone, roadside cameras, dashcams). However, extracting reliable mobility measures from video often requires repeated manual work and disconnected tools.
+## 📌 Tổng Quan Dự Án
+Dự án được thực hiện bởi sinh viên **Đỗ Trung Kiên** nhằm mục tiêu xây dựng một giải pháp giao thông thông minh toàn diện gồm hai thành phần cốt lõi:
+1. **Hệ thống Thị giác máy tính (Computer Vision)**: Tự động nhận diện, theo dõi đa đối tượng (Multi-Object Tracking) và hiệu chỉnh góc nhìn camera để tính toán lưu lượng, quỹ đạo và vận tốc thực tế của các phương tiện giao thông từ video ghi hình.
+2. **Hệ thống Mô phỏng Giao thông (SUMO Simulation)**: Thử nghiệm kịch bản lưu thông thực tế và đánh giá hiệu năng các bộ điều khiển đèn giao thông thích ứng (Fixed-Time vs Q-Learning vs Deep Q-Learning) dựa trên hàng đợi và độ trễ trung bình.
 
-**SimJam Computer Vision Analytics** is an open-source application that turns raw traffic video into planning-ready outputs. It supports:
+---
 
-1. **Traffic object detection** (cars, trucks, buses, bicycles, pedestrians, etc.)
-2. **Multi-object tracking** to keep consistent IDs over time
-3. **Mobility analytics** such as counts, trajectories, and speed estimation (when calibration is available)
-4. **Exportable outputs** (CSV summaries and structured results) to support planning studies and reporting
+## 🚀 Tính Năng Chính
 
-Typical use cases:
-- Turning movement counts (TMC) and approach volumes
-- Speed estimation and speed distributions
-- Trajectory extraction for safety/near-miss analysis
-- Before/after studies (traffic calming, signal timing, policy changes)
-- Data preparation for microsimulation calibration/validation
+### 1. Phân Tích Giao Thông Bằng Thị Giác Máy Tính (src/)
+- **Nhận diện & Theo dõi**: Phát hiện đa dạng phương tiện (xe con, xe máy, xe buýt, xe tải, người đi bộ) sử dụng mô hình **YOLOv8** và thư viện **Supervision**.
+- **Hiệu chỉnh Góc nhìn (Perspective Calibration)**: Chuyển đổi hệ tọa độ ảnh camera sang tọa độ thực tế dạng mét ($m$) giúp đo lường chính xác tốc độ ($km/h$) và quỹ đạo di chuyển.
+- **Giao diện Trực quan (GUI)**: Giao diện hiện đại viết bằng **CustomTkinter** hỗ trợ hiển thị video trực tiếp, vẽ vùng kiểm soát (Region of Interest - ROI), hiển thị thông số tốc độ phương tiện và xuất dữ liệu báo cáo.
+- **Xuất dữ liệu**: Xuất các file báo cáo định dạng CSV về lưu lượng dòng xe, quỹ đạo chi tiết và vận tốc để phục vụ phân tích sâu.
 
-## Workflow Overview
-A practical workflow is:
+### 2. Mô Phỏng & Tối Ưu Hóa Đèn Giao Thông (sumo_simulation/)
+- **Tích hợp Bản đồ Thực tế**: Sử dụng bản đồ nút giao từ OpenStreetMap (OSM) cấu hình mạng lưới giao thông SUMO.
+- **So sánh 3 Bộ điều khiển Đèn tín hiệu (Traffic Light Controllers)**:
+  - **Fixed-Time (Cố định)**: Bộ chu kỳ đèn cố định truyền thống làm mốc so sánh.
+  - **Q-Learning RL (Học máy)**: Tự động điều khiển đèn dựa trên học bảng Q-Table để tối thiểu hóa hàng đợi của nút giao thông.
+  - **Deep Q-Learning (DQL / DQN)**: Bộ điều khiển đèn thông minh ứng dụng mạng nơ-ron sâu DQN, cho phép xử lý kịch bản giao thông phức tạp và lưu lượng cực lớn.
+- **Đánh giá Trực quan**: Tự động thu thập dữ liệu hàng đợi, độ trễ và phần thưởng lũy kế (cumulative reward), sau đó biểu diễn qua các đồ thị so sánh hiệu suất và xuất báo cáo markdown (`heavy_comparison_report.md`).
 
-1) **Detect + track** road users using YOLO-based models  
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/00077e81-e551-42a0-808f-74382595231e"
-       alt="Detection + Tracking interface (SimJam Computer Vision)"
-       width="720">
-</p>
-<p align="center"><em>Step 1 — Detection + Tracking</em></p>
+---
 
-2) **Export analytics** (counts / speeds / trajectories / summaries)
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8a588cb9-e2b7-463b-986b-f9be19fdafe4"
-       alt="Analytics + Export interface (CSV summaries, counts, speeds)"
-       width="720">
-</p>
-<p align="center"><em>Step 2 — Analytics + Export</em></p>
+## 📂 Cấu Trúc Thư Mục
 
-## Short Demo Video (Click to Play)
+```text
+├── src/                                  # Mã nguồn module Thị giác máy tính
+│   ├── SimJamCVAnalytics.py              # Giao diện GUI chính (CustomTkinter)
+│   ├── calib_and_track_ui.py             # Logic giao diện tracking và hiệu chỉnh camera
+│   ├── detection_module.py               # Module nhận diện YOLO và tracking
+│   ├── analytics_module.py               # Module xử lý quỹ đạo, tốc độ phương tiện
+│   ├── cv_intersection_performance_analysis.py  # Phân tích hiệu năng nút giao thông
+│   └── dependency_manager.py             # Quản lý tự động tải các gói thư viện
+│
+├── sumo_simulation/                      # Mã nguồn module Mô phỏng giao thông
+│   ├── traci_osm_ft.py                   # Mô phỏng điều khiển Fixed-Time
+│   ├── traci_osm_ql.py                   # Thuật toán điều khiển Q-Learning
+│   ├── traci_osm_dql.py                  # Thuật toán điều khiển Deep Q-Learning (DQN)
+│   ├── run_simulation_analysis.py        # Kịch bản chính chạy so sánh các thuật toán
+│   ├── compare_heavy_traffic.py          # Kịch bản mô phỏng mật độ giao thông lớn
+│   └── *.xml / *.sumocfg / *.csv / *.png # Bản đồ, cấu hình SUMO và đồ thị kết quả
+│
+├── weights/                              # Trọng số của mô hình học sâu
+│   └── best.pt                           # Trọng số YOLOv8 đã được huấn luyện
+│
+├── requirements.txt                      # Danh sách các thư viện Python bắt buộc
+└── README.md                             # Tài liệu hướng dẫn dự án
+```
 
-<p align="center"><em>Short demo video - Click to Play</em></p>
-<p align="center">
-  <a href="https://youtu.be/ez3ZOUufBHY" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/user-attachments/assets/6f54524c-8524-4ac8-adaa-4cf4ee3f8eb5"
-         alt="SimJam Computer Vision Analytics - Short Demo"
-         width="720">
-  </a>
-</p>
+---
 
+## 🛠️ Yêu Cầu Cài Đặt
 
-## Getting Started (Video Tutorial)
+### 1. Môi trường Python
+* **Python phiên bản 3.12 trở lên**.
+* Cài đặt các thư viện Python liên quan:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-The easiest way to get started is to follow the step-by-step video tutorial:
+### 2. Cài đặt SUMO (Simulation of Urban MObility)
+* Tải và cài đặt phần mềm SUMO từ trang chủ [Eclipse SUMO](https://eclipse.dev/sumo/).
+* Đảm bảo biến môi trường **`SUMO_HOME`** đã được cấu hình trỏ tới đường dẫn thư mục cài đặt SUMO trên hệ thống của bạn (Ví dụ trên Windows: `C:\Program Files (x86)\Eclipse\Sumo`).
 
-🎥 **Getting Started Tutorial (Click to Play)**  
-<p align="center">
-  <a href="https://youtu.be/By7EyE-WsxI" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/user-attachments/assets/14896b21-8088-4302-8845-f95d2fc83ea1"
-         alt="SimJam Computer Vision Analytics - Getting Started Tutorial"
-         width="720">
-  </a>
-</p>
+---
 
-## Requirement 
-Python version 3.12 and higher
+## 🎮 Hướng Dẫn Sử Dụng
 
-Visual Studio code
+### 1. Khởi chạy Giao diện Phân tích Thị giác Máy tính
+Khởi chạy giao diện người dùng để thực hiện nhận diện vật thể và đo đạc tốc độ phương tiện trên video:
+```bash
+python src/SimJamCVAnalytics.py
+```
+* **Lưu ý**: Lần đầu chạy chương trình sẽ tự động kiểm tra và cài đặt các thư viện thiếu qua giao diện Bootstrap cài đặt nhanh.
 
-## License
-This project is licensed under the MIT License. It uses Ultralytics YOLO which is licensed under AGPL-3.0. This project is distributed as open-source in compliance with that license.
+### 2. Khởi chạy Mô phỏng và Đánh giá Đèn Giao thông (SUMO)
+Chạy kịch bản mô phỏng giao thông để so sánh hiệu năng giữa các bộ điều khiển Fixed-Time, Q-Learning và Deep Q-Learning:
+```bash
+python sumo_simulation/run_simulation_analysis.py
+```
+Sau khi chạy xong, chương trình sẽ tự động:
+1. Xuất dữ liệu so sánh chi tiết ra các file CSV.
+2. Vẽ và lưu các biểu đồ so sánh (`sumo_cv_delay_comparison.png`, `sumo_cv_speed_comparison.png`, v.v.).
+3. Tạo báo cáo tóm tắt hiệu suất trực quan ngay trong thư mục mô phỏng.
+
+---
+
+## 📜 Giấy Phép & Bản Quyền
+Dự án được phân phối dưới dạng mã nguồn mở phục vụ mục đích nghiên cứu học tập:
+* Mô hình YOLOv8 tuân theo giấy phép **AGPL-3.0** từ Ultralytics.
+* Giao diện UI sử dụng **CustomTkinter** giấy phép MIT.
