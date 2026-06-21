@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def load_metrics(filename):
     steps, cumulative_rewards, queue_lengths = [], [], []
-    filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
+    filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'outputs', filename)
     if not os.path.exists(filepath):
         print(f"Warning: File {filename} not found.")
         return None, None, None
@@ -42,25 +42,26 @@ def main():
     print("=== Traffic Light Control Comparison on OSM Map ===")
 
     ft_steps,  ft_rewards,  ft_queues  = load_metrics('osm_ft_metrics.csv')
-    ql_steps,  ql_rewards,  ql_queues  = load_metrics('osm_ql_metrics.csv')
-    dql_steps, dql_rewards, dql_queues = load_metrics('osm_dql_metrics.csv')
+    mp_steps,  mp_rewards,  mp_queues  = load_metrics('osm_mp_metrics.csv')
+    ac_steps,  ac_rewards,  ac_queues  = load_metrics('osm_actuated_metrics.csv')
 
-    if ft_steps is None or ql_steps is None or dql_steps is None:
-        print("Error: Run all 3 scripts first.")
+    if ft_steps is None or mp_steps is None or ac_steps is None:
+        print("Error: Run all 3 scripts (FT, MP, Actuated) first.")
         return
 
     # Build continuous cumulative reward (no episode resets)
     ft_steps,  ft_cont  = make_continuous_reward(ft_steps,  ft_rewards)
-    ql_steps,  ql_cont  = make_continuous_reward(ql_steps,  ql_rewards)
-    dql_steps, dql_cont = make_continuous_reward(dql_steps, dql_rewards)
+    mp_steps,  mp_cont  = make_continuous_reward(mp_steps,  mp_rewards)
+    ac_steps,  ac_cont  = make_continuous_reward(ac_steps,  ac_rewards)
 
-    base = os.path.dirname(os.path.abspath(__file__))
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'outputs')
+    os.makedirs(base, exist_ok=True)
 
     # --- Plot 1: Continuous Cumulative Reward ---
     fig, ax = plt.subplots(figsize=(11, 6))
     ax.plot(ft_steps,  ft_cont,  label="Fixed Timing (FT)",     color="blue",   linewidth=1.8)
-    ax.plot(ql_steps,  ql_cont,  label="Q-Learning (QL)",       color="orange", linewidth=1.8)
-    ax.plot(dql_steps, dql_cont, label="Deep Q-Learning (DQL)", color="green",  linewidth=1.8)
+    ax.plot(mp_steps,  mp_cont,  label="Max-Pressure (MP)",     color="orange", linewidth=1.8)
+    ax.plot(ac_steps,  ac_cont,  label="Actuated Control (AC)", color="purple",  linewidth=1.8)
     ax.set_xlabel("Simulation Step")
     ax.set_ylabel("Cumulative Reward (continuous)")
     ax.set_title("OSM Map: Cumulative Reward Comparison (Higher is Better)")
@@ -77,8 +78,8 @@ def main():
     window = 5
     datasets = [
         (ft_steps,  ft_queues,  "Fixed Timing (FT)",     "blue",   "darkblue"),
-        (ql_steps,  ql_queues,  "Q-Learning (QL)",       "orange", "darkorange"),
-        (dql_steps, dql_queues, "Deep Q-Learning (DQL)", "green",  "darkgreen"),
+        (mp_steps,  mp_queues,  "Max-Pressure (MP)",     "orange", "darkorange"),
+        (ac_steps,  ac_queues,  "Actuated Control (AC)", "purple", "purple"),
     ]
     for steps, queues, label, raw_c, ma_c in datasets:
         ax2.plot(steps, queues, color=raw_c, alpha=0.2, linewidth=1)
@@ -102,9 +103,9 @@ def main():
     print(f"{'Method':20} | {'Avg Queue':12} | {'Final Cum. Reward':20}")
     print("-" * 58)
     for name, queues, cont in [
-        ("Fixed Timing",    ft_queues,  ft_cont),
-        ("Q-Learning",      ql_queues,  ql_cont),
-        ("Deep Q-Learning", dql_queues, dql_cont),
+        ("Fixed Timing",     ft_queues,  ft_cont),
+        ("Max-Pressure",     mp_queues,  mp_cont),
+        ("Actuated Control", ac_queues,  ac_cont),
     ]:
         print(f"{name:20} | {np.mean(queues):12.2f} | {cont[-1]:20.1f}")
     print("-" * 58)

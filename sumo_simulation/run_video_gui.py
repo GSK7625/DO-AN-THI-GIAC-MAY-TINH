@@ -10,7 +10,7 @@ else:
 import traci
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sumocfg_path = os.path.join(script_dir, 'osm_cut_video.sumocfg')
+sumocfg_path = os.path.join(script_dir, 'configs', 'osm_cut_video.sumocfg')
 
 sumo_cmd = [
     'sumo-gui',

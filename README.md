@@ -19,11 +19,11 @@ Dự án được thực hiện bởi sinh viên nhằm mục tiêu xây dựng 
 
 ### 2. Mô Phỏng & Tối Ưu Hóa Đèn Giao Thông (sumo_simulation/)
 - **Tích hợp Bản đồ Thực tế**: Sử dụng bản đồ nút giao từ OpenStreetMap (OSM) cấu hình mạng lưới giao thông SUMO.
-- **So sánh 3 Bộ điều khiển Đèn tín hiệu (Traffic Light Controllers)**:
+- **So sánh các Bộ điều khiển Đèn tín hiệu (Traffic Light Controllers)**:
   - **Fixed-Time (Cố định)**: Bộ chu kỳ đèn cố định truyền thống làm mốc so sánh.
-  - **Q-Learning RL (Học máy)**: Tự động điều khiển đèn dựa trên học bảng Q-Table để tối thiểu hóa hàng đợi của nút giao thông.
-  - **Deep Q-Learning (DQL / DQN)**: Bộ điều khiển đèn thông minh ứng dụng mạng nơ-ron sâu DQN, cho phép xử lý kịch bản giao thông phức tạp và lưu lượng cực lớn.
-- **Đánh giá Trực quan**: Tự động thu thập dữ liệu hàng đợi, độ trễ và phần thưởng lũy kế (cumulative reward), sau đó biểu diễn qua các đồ thị so sánh hiệu suất và xuất báo cáo markdown (`heavy_comparison_report.md`).
+  - **Actuated Control (Cảm biến)**: Điều khiển dựa trên cảm biến phát hiện phương tiện thực tế.
+  - **Max-Pressure Control (Áp suất cực đại)**: Thuật toán điều khiển tối ưu hóa luồng giao thông dựa trên áp suất chênh lệch hàng đợi giữa các hướng của nút giao.
+- **Đánh giá Trực quan**: Tự động thu thập dữ liệu hàng đợi, độ trễ và phần thưởng lũy kế (cumulative reward), sau đó biểu diễn qua các đồ thị so sánh hiệu suất và xuất báo cáo markdown (`simulation_comparison_report.md`).
 
 ---
 
@@ -39,12 +39,14 @@ Dự án được thực hiện bởi sinh viên nhằm mục tiêu xây dựng 
 │   └── dependency_manager.py             # Quản lý tự động tải các gói thư viện
 │
 ├── sumo_simulation/                      # Mã nguồn module Mô phỏng giao thông
+│   ├── configs/                          # Bản đồ và file cấu hình SUMO (.net.xml, .rou.xml, .sumocfg)
+│   ├── models/                           # Trọng số huấn luyện học tăng cường (.pt, .pkl)
+│   ├── outputs/                          # Kết quả đầu ra (đồ thị png, metrics csv, báo cáo so sánh md)
 │   ├── traci_osm_ft.py                   # Mô phỏng điều khiển Fixed-Time
-│   ├── traci_osm_ql.py                   # Thuật toán điều khiển Q-Learning
-│   ├── traci_osm_dql.py                  # Thuật toán điều khiển Deep Q-Learning (DQN)
-│   ├── run_simulation_analysis.py        # Kịch bản chính chạy so sánh các thuật toán
-│   ├── compare_heavy_traffic.py          # Kịch bản mô phỏng mật độ giao thông lớn
-│   └── *.xml / *.sumocfg / *.csv / *.png # Bản đồ, cấu hình SUMO và đồ thị kết quả
+│   ├── traci_osm_actuated.py             # Mô phỏng điều khiển Actuated Control
+│   ├── traci_osm_mp.py                   # Mô phỏng điều khiển Max-Pressure
+│   ├── compare_osm_results.py            # Kịch bản so sánh kết quả mô phỏng các thuật toán
+│   └── run_simulation_analysis.py        # Kịch bản chính so sánh kết quả mô phỏng với dữ liệu thực tế (CV)
 │
 ├── weights/                              # Trọng số của mô hình học sâu
 │   └── best.pt                          
@@ -85,8 +87,8 @@ Chạy kịch bản mô phỏng giao thông để so sánh hiệu năng giữa c
 python sumo_simulation/run_simulation_analysis.py
 ```
 Sau khi chạy xong, chương trình sẽ tự động:
-1. Xuất dữ liệu so sánh chi tiết ra các file CSV.
-2. Vẽ và lưu các biểu đồ so sánh (`sumo_cv_delay_comparison.png`, `sumo_cv_speed_comparison.png`, v.v.).
-3. Tạo báo cáo tóm tắt hiệu suất trực quan ngay trong thư mục mô phỏng.
+1. Xuất dữ liệu so sánh chi tiết ra các file CSV trong thư mục `sumo_simulation/outputs/`.
+2. Vẽ và lưu các biểu đồ so sánh (`sumo_cv_delay_comparison.png`, `sumo_cv_speed_comparison.png`, v.v.) vào `sumo_simulation/outputs/`.
+3. Tạo báo cáo tóm tắt hiệu suất trực quan (`simulation_comparison_report.md`) ngay trong thư mục `sumo_simulation/outputs/`.
 
 --

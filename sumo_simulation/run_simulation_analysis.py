@@ -22,12 +22,14 @@ DEFAULT_CV_METRICS = {
 
 def load_cv_metrics():
     cv_metrics = {}
-    filepath = "analysis_summary.txt"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(os.path.dirname(script_dir), "cv_output", "analysis_summary.txt")
     if not os.path.exists(filepath):
         # Try checking parent directory or cv_output folder relative to parent
         paths_to_try = [
-            os.path.join("..", "analysis_summary.txt"),
-            os.path.join("..", "cv_output", "analysis_summary.txt")
+            "analysis_summary.txt",
+            os.path.join(script_dir, "analysis_summary.txt"),
+            os.path.join(script_dir, "..", "analysis_summary.txt")
         ]
         for p in paths_to_try:
             if os.path.exists(p):
@@ -85,7 +87,8 @@ def calculate_los(delay):
 def main():
     global CV_METRICS
     CV_METRICS = load_cv_metrics()
-    sumocfg_path = "osm_cut_video.sumocfg"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    sumocfg_path = os.path.join(script_dir, "configs", "osm_cut_video.sumocfg")
     
     # Use non-GUI sumo for speed and consistency
     sumo_cmd = ["sumo", "-c", sumocfg_path]
@@ -226,7 +229,9 @@ def main():
         }
         
     # Write structured CSV comparison
-    csv_path = "simulation_vs_cv_metrics.csv"
+    outputs_dir = os.path.join(script_dir, "outputs")
+    os.makedirs(outputs_dir, exist_ok=True)
+    csv_path = os.path.join(outputs_dir, "simulation_vs_cv_metrics.csv")
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Lane ID', 'Metric', 'CV Value', 'SUMO Filtered', 'SUMO Full'])
@@ -283,7 +288,7 @@ We compare two scenarios:
     print("="*95)
     
     # Save Report
-    report_path = "simulation_comparison_report.md"
+    report_path = os.path.join(outputs_dir, "simulation_comparison_report.md")
     
     # Add charts and findings to MD report
     comparison_md += """
@@ -334,7 +339,7 @@ When comparing the simulated SUMO lanes directly to the CV lanes, we observe a n
     plt.xticks(x, lanes)
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
-    plt.savefig('sumo_cv_delay_comparison.png', dpi=300)
+    plt.savefig(os.path.join(outputs_dir, 'sumo_cv_delay_comparison.png'), dpi=300)
     plt.close()
     
     # Chart 2: Speed Comparison
@@ -347,7 +352,7 @@ When comparing the simulated SUMO lanes directly to the CV lanes, we observe a n
     plt.xticks(x, lanes)
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
-    plt.savefig('sumo_cv_speed_comparison.png', dpi=300)
+    plt.savefig(os.path.join(outputs_dir, 'sumo_cv_speed_comparison.png'), dpi=300)
     plt.close()
     
     # Chart 3: Throughput Comparison
@@ -360,10 +365,10 @@ When comparing the simulated SUMO lanes directly to the CV lanes, we observe a n
     plt.xticks(x, lanes)
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
-    plt.savefig('sumo_cv_throughput_comparison.png', dpi=300)
+    plt.savefig(os.path.join(outputs_dir, 'sumo_cv_throughput_comparison.png'), dpi=300)
     plt.close()
     
-    print("Plots generated successfully: sumo_cv_delay_comparison.png, sumo_cv_speed_comparison.png, sumo_cv_throughput_comparison.png")
+    print("Plots generated successfully in outputs directory.")
 
 if __name__ == '__main__':
     main()

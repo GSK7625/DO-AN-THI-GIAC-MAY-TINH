@@ -1,0 +1,10 @@
+ScenarioScale,ScenarioName,Strategy,AvgQueueLength,AvgWaitingTime,Throughput,TotalDelay,AvgDelay
+0.5,Low,FT,8.66,26.09,288,8617.2,29.92
+0.5,Low,AC,3.88,8.15,288,3380.6,11.74
+0.5,Low,MP,3.73,7.6,288,3218.2,11.17
+1.0,Medium,FT,13.95,21.32,564,13937.7,24.71
+1.0,Medium,AC,7.74,8.36,564,6682.5,11.85
+1.0,Medium,MP,7.1,7.38,564,6072.4,10.77
+1.5,High,FT,16.54,16.4,844,16123.7,19.1
+1.5,High,AC,14.06,11.64,844,12787.0,15.15
+1.5,High,MP,9.97,7.27,844,8761.2,10.38

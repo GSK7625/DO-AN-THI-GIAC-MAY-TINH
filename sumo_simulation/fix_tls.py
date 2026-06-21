@@ -2,7 +2,7 @@ import re
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-net_path = os.path.join(script_dir, 'osm_cut.net.xml')
+net_path = os.path.join(script_dir, 'configs', 'osm_cut.net.xml')
 
 with open(net_path, 'r', encoding='utf-8') as f:
     content = f.read()

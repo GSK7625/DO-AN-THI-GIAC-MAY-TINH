@@ -15,7 +15,7 @@ import traci
 
 # sumo config
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sumocfg_path = os.path.join(script_dir, 'osm_cut_rl.sumocfg')
+sumocfg_path = os.path.join(script_dir, 'configs', 'osm_cut_rl.sumocfg')
 
 GUI_MODE = False
 sumo_binary = 'sumo-gui' if GUI_MODE else 'sumo'
@@ -25,7 +25,8 @@ Sumo_config = [
     '-c', sumocfg_path,
     '--step-length', '0.10',
     '--delay', '0',
-    '--lateral-resolution', '0'
+    '--lateral-resolution', '0',
+    '--seed', '42'
 ]
 
 # Detectors and TLS info
@@ -44,7 +45,7 @@ def get_queues():
     return [traci.lanearea.getLastStepVehicleNumber(det) for det in detector_ids]
 
 def main():
-    NUM_EPISODES = 20
+    NUM_EPISODES = 1
     print(f"\n=== Starting Online Fixed Time Simulation on OSM Map ({NUM_EPISODES} Episodes) ===")
     
     episode_rewards = []
@@ -87,7 +88,9 @@ def main():
         print(f"Episode {ep+1} Finished. Total Steps: {global_step}, Cum. Reward: {ep_reward:.1f}, Avg Queue: {avg_q:.2f}")
 
     # Save to CSV
-    csv_path = os.path.join(script_dir, 'osm_ft_metrics.csv')
+    outputs_dir = os.path.join(script_dir, 'outputs')
+    os.makedirs(outputs_dir, exist_ok=True)
+    csv_path = os.path.join(outputs_dir, 'osm_ft_metrics.csv')
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['step', 'cumulative_reward', 'queue_length'])
