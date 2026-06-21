@@ -119,8 +119,15 @@ def main():
     
     # Run simulation loop
     while traci.simulation.getMinExpectedNumber() > 0:
+        # ==========================================
+        # 1. FIXED-TIME CONTROL (FT)
+        # ==========================================
         if algo == 'FT':
             pass
+            
+        # ==========================================
+        # 2. MAX-PRESSURE CONTROL (MP)
+        # ==========================================
         elif algo == 'MP':
             if yellow_timer > 0:
                 yellow_timer -= 1
@@ -147,6 +154,10 @@ def main():
                         target_green_idx = (current_green_idx + 1) % 4
                     current_green_idx = target_green_idx
                     yellow_timer = 30
+                    
+        # ==========================================
+        # 3. ACTUATED CONTROL (AC)
+        # ==========================================
         elif algo == 'AC':
             if yellow_timer > 0:
                 yellow_timer -= 1

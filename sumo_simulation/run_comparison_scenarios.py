@@ -68,8 +68,15 @@ def run_simulation(scale, control_type):
     vehicle_data = {}
     
     while traci.simulation.getMinExpectedNumber() > 0:
+        # ==========================================
+        # 1. FIXED-TIME CONTROL (FT)
+        # ==========================================
         if control_type == 'FT':
             pass  # Default SUMO fixed time schedule
+            
+        # ==========================================
+        # 2. MAX-PRESSURE CONTROL (MP)
+        # ==========================================
         elif control_type == 'MP':
             if yellow_timer > 0:
                 yellow_timer -= 1
@@ -96,6 +103,10 @@ def run_simulation(scale, control_type):
                         target_green_idx = (current_green_idx + 1) % 4
                     current_green_idx = target_green_idx
                     yellow_timer = 30
+                    
+        # ==========================================
+        # 3. ACTUATED CONTROL (AC)
+        # ==========================================
         elif control_type == 'AC':
             if yellow_timer > 0:
                 yellow_timer -= 1
