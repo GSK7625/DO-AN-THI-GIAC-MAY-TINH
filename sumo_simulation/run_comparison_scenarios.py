@@ -66,8 +66,10 @@ def run_simulation(scale, control_type):
     
     step_queues = []
     vehicle_data = {}
+    arrived_count = 0
+    MAX_SIMULATION_TIME = 1000.0  # seconds
     
-    while traci.simulation.getMinExpectedNumber() > 0:
+    while traci.simulation.getMinExpectedNumber() > 0 and traci.simulation.getTime() < MAX_SIMULATION_TIME:
         # ==========================================
         # 1. FIXED-TIME CONTROL (FT)
         # ==========================================
@@ -128,6 +130,7 @@ def run_simulation(scale, control_type):
                     yellow_timer = 30
 
         traci.simulationStep()
+        arrived_count += traci.simulation.getArrivedNumber()
         
         # Track queue sizes (sum across all detectors)
         q_sum = sum(traci.lanearea.getLastStepVehicleNumber(det) for det in detector_ids)
@@ -148,7 +151,7 @@ def run_simulation(scale, control_type):
     
     # Aggregated metrics calculation
     avg_queue = np.mean(step_queues) if step_queues else 0.0
-    throughput = len(vehicle_data)
+    throughput = arrived_count
     total_delay = sum(d['time_loss'] for d in vehicle_data.values())
     avg_wait = np.mean([d['waiting_time'] for d in vehicle_data.values()]) if vehicle_data else 0.0
     avg_delay = np.mean([d['time_loss'] for d in vehicle_data.values()]) if vehicle_data else 0.0
