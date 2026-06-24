@@ -12,23 +12,23 @@ Báo cáo này đánh giá hiệu năng của ba thuật toán điều khiển �
 ### Kịch bản 1: Lưu lượng thấp (Scale = 0.5)
 | Thuật toán | Avg Queue Length (xe) | Avg Waiting Time (s) | Throughput (xe) | Total Delay (s) | Avg Delay/Vehicle (s) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| FT | 9.03 | 25.57 s | 269 | 8354.6 s | 29.31 s |
-| AC | 3.94 | 8.05 s | 279 | 3338.6 s | 11.59 s |
-| MP | 3.79 | 7.53 s | 281 | 3191.2 s | 11.08 s |
+| FT | 11.81 | 31.72 s | 262 | 11126.6 s | 38.63 s |
+| AC | 3.66 | 6.77 s | 271 | 2947.4 s | 10.23 s |
+| MP | 3.82 | 7.20 s | 271 | 3115.9 s | 10.82 s |
 
 ### Kịch bản 2: Lưu lượng trung bình (Scale = 1.0)
 | Thuật toán | Avg Queue Length (xe) | Avg Waiting Time (s) | Throughput (xe) | Total Delay (s) | Avg Delay/Vehicle (s) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| FT | 14.91 | 21.11 s | 531 | 13571.1 s | 24.45 s |
-| AC | 7.85 | 8.27 s | 550 | 6593.4 s | 11.71 s |
-| MP | 7.22 | 7.29 s | 553 | 5993.0 s | 10.63 s |
+| FT | 22.72 | 31.55 s | 521 | 22829.0 s | 40.48 s |
+| AC | 8.92 | 8.49 s | 535 | 7622.1 s | 13.51 s |
+| MP | 8.03 | 7.30 s | 539 | 6700.2 s | 11.88 s |
 
 ### Kịch bản 3: Lưu lượng cao (Scale = 1.5)
 | Thuật toán | Avg Queue Length (xe) | Avg Waiting Time (s) | Throughput (xe) | Total Delay (s) | Avg Delay/Vehicle (s) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| FT | 17.60 | 16.65 s | 777 | 15589.2 s | 19.37 s |
-| AC | 14.34 | 11.48 s | 810 | 12413.5 s | 14.99 s |
-| MP | 10.26 | 7.31 s | 784 | 8414.0 s | 10.50 s |
+| FT | 31.45 | 33.19 s | 776 | 36859.6 s | 43.88 s |
+| AC | 16.49 | 11.11 s | 798 | 14748.3 s | 17.56 s |
+| MP | 13.45 | 7.69 s | 802 | 11599.5 s | 13.81 s |
 
 ---
 

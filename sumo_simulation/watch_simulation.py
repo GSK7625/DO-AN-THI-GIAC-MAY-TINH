@@ -171,7 +171,17 @@ def main():
                 action = 0
                 if green_timer >= MIN_GREEN_STEPS:
                     active_dets = phase_detectors[current_green_idx]
-                    has_vehicles = any(traci.lanearea.getLastStepVehicleNumber(det) > 0 for det in active_dets)
+                    has_vehicles = False
+                    for det in active_dets:
+                        lane_id = det.replace("det_", "")
+                        lane_length = traci.lane.getLength(lane_id)
+                        veh_ids = traci.lanearea.getLastStepVehicleIDs(det)
+                        for veh in veh_ids:
+                            if traci.vehicle.getLanePosition(veh) > (lane_length - 30.0):
+                                has_vehicles = True
+                                break
+                        if has_vehicles:
+                            break
                     if not has_vehicles or green_timer >= MAX_GREEN_STEPS:
                         action = 1
                 if action == 1:
