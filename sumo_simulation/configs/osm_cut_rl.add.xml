@@ -1,22 +1,15 @@
 <additional>
-    <!-- E2 detectors on Westbound/Eastbound approach 428067759#0 -->
     <laneAreaDetector id="det_428067759#0_0" lane="428067759#0_0" pos="0" length="34" freq="1" file="nul"/>
     <laneAreaDetector id="det_428067759#0_1" lane="428067759#0_1" pos="0" length="34" freq="1" file="nul"/>
     <laneAreaDetector id="det_428067759#0_2" lane="428067759#0_2" pos="0" length="34" freq="1" file="nul"/>
-
-    <!-- E2 detectors on Southbound approach 428067750#0 -->
+    <laneAreaDetector id="det_428067756.116_0" lane="428067756.116_0" pos="0" length="42" freq="1" file="nul"/>
+    <laneAreaDetector id="det_428067756.116_1" lane="428067756.116_1" pos="0" length="42" freq="1" file="nul"/>
+    <laneAreaDetector id="det_428067756.116_2" lane="428067756.116_2" pos="0" length="42" freq="1" file="nul"/>
     <laneAreaDetector id="det_428067750#0_0" lane="428067750#0_0" pos="0" length="42" freq="1" file="nul"/>
     <laneAreaDetector id="det_428067750#0_1" lane="428067750#0_1" pos="0" length="42" freq="1" file="nul"/>
     <laneAreaDetector id="det_428067750#0_2" lane="428067750#0_2" pos="0" length="42" freq="1" file="nul"/>
-
-    <!-- E2 detectors on Eastbound approach 428067756.116 -->
-    <laneAreaDetector id="det_428067756.116_0" lane="428067756.116_0" pos="30" length="42" freq="1" file="nul"/>
-    <laneAreaDetector id="det_428067756.116_1" lane="428067756.116_1" pos="30" length="42" freq="1" file="nul"/>
-    <laneAreaDetector id="det_428067756.116_2" lane="428067756.116_2" pos="30" length="42" freq="1" file="nul"/>
-
-    <!-- E2 detectors on Northbound approach -577951513 -->
-    <laneAreaDetector id="det_-577951513_0" lane="-577951513_0" pos="0" length="31" freq="1" file="nul"/>
-    <laneAreaDetector id="det_-577951513_1" lane="-577951513_1" pos="0" length="31" freq="1" file="nul"/>
-    <laneAreaDetector id="det_-577951513_2" lane="-577951513_2" pos="0" length="31" freq="1" file="nul"/>
-    <laneAreaDetector id="det_-577951513_3" lane="-577951513_3" pos="0" length="31" freq="1" file="nul"/>
+    <laneAreaDetector id="det_-577951513_0" lane="-577951513_0" pos="0" length="32" freq="1" file="nul"/>
+    <laneAreaDetector id="det_-577951513_1" lane="-577951513_1" pos="0" length="32" freq="1" file="nul"/>
+    <laneAreaDetector id="det_-577951513_2" lane="-577951513_2" pos="0" length="32" freq="1" file="nul"/>
+    <laneAreaDetector id="det_-577951513_3" lane="-577951513_3" pos="0" length="32" freq="1" file="nul"/>
 </additional>

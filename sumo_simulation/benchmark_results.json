@@ -1,0 +1,143 @@
+{
+  "Low": {
+    "FT": {
+      "algo": "FT",
+      "scale": 0.5,
+      "steps": 9382,
+      "sim_duration": 938.2,
+      "arrived": 400,
+      "avg_queue": 14.483585589426562,
+      "max_queue": 29.0,
+      "avg_wait": 33.287749999999996,
+      "max_wait": 100.0,
+      "avg_delay": 39.51422675313374,
+      "total_delay": 15805.690701253498,
+      "avg_stopped_pct": 30.03019913504083,
+      "elapsed": 81.40093564987183
+    },
+    "AC": {
+      "algo": "AC",
+      "scale": 0.5,
+      "steps": 7859,
+      "sim_duration": 785.9000000000001,
+      "arrived": 400,
+      "avg_queue": 9.772871866649702,
+      "max_queue": 24.0,
+      "avg_wait": 14.308499999999999,
+      "max_wait": 84.6,
+      "avg_delay": 21.490082177778113,
+      "total_delay": 8596.032871111245,
+      "avg_stopped_pct": 21.35789029676157,
+      "elapsed": 53.31755518913269
+    },
+    "MP": {
+      "algo": "MP",
+      "scale": 0.5,
+      "steps": 9649,
+      "sim_duration": 964.9000000000001,
+      "arrived": 400,
+      "avg_queue": 4.668981241579439,
+      "max_queue": 16.0,
+      "avg_wait": 4.64675,
+      "max_wait": 100.0,
+      "avg_delay": 13.284748025255825,
+      "total_delay": 5313.89921010233,
+      "avg_stopped_pct": 11.621367957372739,
+      "elapsed": 49.75709104537964
+    }
+  },
+  "Medium": {
+    "FT": {
+      "algo": "FT",
+      "scale": 1.0,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 606,
+      "avg_queue": 21.69,
+      "max_queue": 34.0,
+      "avg_wait": 31.413836477987424,
+      "max_wait": 100.0,
+      "avg_delay": 37.52743072458927,
+      "total_delay": 23867.445940838777,
+      "avg_stopped_pct": 29.47857196680878,
+      "elapsed": 113.0718321800232
+    },
+    "AC": {
+      "algo": "AC",
+      "scale": 1.0,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 658,
+      "avg_queue": 17.8176,
+      "max_queue": 32.0,
+      "avg_wait": 20.866715542521995,
+      "max_wait": 100.0,
+      "avg_delay": 29.115718491530455,
+      "total_delay": 19856.92001122377,
+      "avg_stopped_pct": 22.719017738041007,
+      "elapsed": 107.74947476387024
+    },
+    "MP": {
+      "algo": "MP",
+      "scale": 1.0,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 775,
+      "avg_queue": 12.2043,
+      "max_queue": 29.0,
+      "avg_wait": 6.988832487309645,
+      "max_wait": 100.0,
+      "avg_delay": 17.28556676263057,
+      "total_delay": 13621.026608952889,
+      "avg_stopped_pct": 16.686196956200355,
+      "elapsed": 93.59617877006531
+    }
+  },
+  "High": {
+    "FT": {
+      "algo": "FT",
+      "scale": 1.5,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 677,
+      "avg_queue": 24.1727,
+      "max_queue": 35.0,
+      "avg_wait": 30.06615598885794,
+      "max_wait": 100.0,
+      "avg_delay": 36.390631099320295,
+      "total_delay": 26128.473129311973,
+      "avg_stopped_pct": 28.734918067400848,
+      "elapsed": 130.0071940422058
+    },
+    "AC": {
+      "algo": "AC",
+      "scale": 1.5,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 766,
+      "avg_queue": 21.5378,
+      "max_queue": 36.0,
+      "avg_wait": 19.277125,
+      "max_wait": 100.0,
+      "avg_delay": 28.79194117608491,
+      "total_delay": 23033.55294086793,
+      "avg_stopped_pct": 21.093279926673,
+      "elapsed": 118.08838772773743
+    },
+    "MP": {
+      "algo": "MP",
+      "scale": 1.5,
+      "steps": 10000,
+      "sim_duration": 1000.0,
+      "arrived": 866,
+      "avg_queue": 17.8177,
+      "max_queue": 29.0,
+      "avg_wait": 8.176222222222222,
+      "max_wait": 100.0,
+      "avg_delay": 21.05169833884804,
+      "total_delay": 18946.528504963237,
+      "avg_stopped_pct": 16.97953890050049,
+      "elapsed": 107.73013663291931
+    }
+  }
+}

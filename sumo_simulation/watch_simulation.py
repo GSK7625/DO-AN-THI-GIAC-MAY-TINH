@@ -1,136 +1,115 @@
 import os
 import sys
+import codecs
+
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, errors='replace')
+if sys.stderr and sys.stderr.encoding != 'utf-8':
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, errors='replace')
+
+try:
+    INTERACTIVE = sys.stdin.isatty()
+except Exception:
+    INTERACTIVE = False
+
 import numpy as np
 
-# Establish SUMO_HOME path for TraCI
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-else:
+if 'SUMO_HOME' not in os.environ:
     sys.exit("Please declare environment variable 'SUMO_HOME'")
 
+tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
+sys.path.append(tools)
 import traci
 
-# Setup paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sumocfg_path = os.path.join(script_dir, 'configs', 'osm_cut_rl.sumocfg')
+sumocfg_path = os.path.join(script_dir, '..', 'intersection', 'seattle', 'osm_cut_rl.sumocfg')
 
-detector_ids = [
-    "det_428067759#0_0", "det_428067759#0_1", "det_428067759#0_2",
-    "det_428067750#0_0", "det_428067750#0_1", "det_428067750#0_2",
-    "det_428067756.116_0", "det_428067756.116_1", "det_428067756.116_2",
-    "det_-577951513_0", "det_-577951513_1", "det_-577951513_2", "det_-577951513_3"
-]
+# --- Simulation parameters ---
 tls_id = "cluster_53190763_5896114911"
 GREEN_PHASES = [0, 2, 4, 6]
-
-phase_detectors = {
-    0: ["det_428067759#0_0", "det_428067759#0_1", "det_428067759#0_2"],        # East
-    1: ["det_428067750#0_0", "det_428067750#0_1", "det_428067750#0_2"],        # North
-    2: ["det_428067756.116_0", "det_428067756.116_1", "det_428067756.116_2"],  # West
-    3: ["det_-577951513_0", "det_-577951513_1", "det_-577951513_2", "det_-577951513_3"]  # South
-}
-
 MIN_GREEN_STEPS = 50
 MAX_GREEN_STEPS = 500
+MAX_SIMULATION_TIME = 1000.0
 
-def get_menu_choice(title, options):
+detector_ids = [
+    "det_428067759#0_0",   "det_428067759#0_1",   "det_428067759#0_2",
+    "det_428067756.116_0", "det_428067756.116_1", "det_428067756.116_2",
+    "det_428067750#0_0",   "det_428067750#0_1",   "det_428067750#0_2",
+    "det_-577951513_0",    "det_-577951513_1",    "det_-577951513_2", "det_-577951513_3",
+]
+
+phase_detectors = {
+    0: ["det_428067759#0_0",   "det_428067759#0_1",   "det_428067759#0_2"],
+    1: ["det_428067750#0_0",   "det_428067750#0_1",   "det_428067750#0_2"],
+    2: ["det_428067756.116_0", "det_428067756.116_1", "det_428067756.116_2"],
+    3: ["det_-577951513_0",    "det_-577951513_1",    "det_-577951513_2", "det_-577951513_3"],
+}
+
+# --- Options ---
+TRAFFIC_OPTIONS = {
+    '1': ('Low traffic',    0.5),
+    '2': ('Medium traffic', 1.0),
+    '3': ('High traffic',   1.5),
+}
+ALGO_OPTIONS = {
+    '1': 'Fixed-Time (FT)',
+    '2': 'Actuated Control (AC)',
+    '3': 'Max-Pressure (MP)',
+}
+ALGO_MAP = {'1': 'FT', '2': 'AC', '3': 'MP'}
+
+
+def get_choice(title, options):
     print(f"\n=== {title} ===")
     for k, v in options.items():
-        print(f"  {k}. {v}")
+        label = v[0] if isinstance(v, tuple) else v
+        print(f"  {k}. {label}")
     while True:
-        choice = input("Nhập lựa chọn của bạn: ").strip()
+        choice = input("Nhap lua chon cua ban: ").strip()
         if choice in options:
             return choice
-        print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
+        print("Lua chon khong hop le.")
 
-def main():
-    print("==================================================")
-    print("      SUMO INTERACTIVE SIMULATION WATCHER         ")
-    print("==================================================")
-    
-    # 1. Choose Traffic Scenario
-    scenarios = {
-        '1': 'Lưu lượng thấp (Low - Scale 0.5)',
-        '2': 'Lưu lượng trung bình (Medium - Scale 1.0)',
-        '3': 'Lưu lượng cao (High - Scale 1.5)'
-    }
-    scen_choice = get_menu_choice("CHỌN KỊCH BẢN LƯU LƯỢNG", scenarios)
-    scale_map = {'1': 0.5, '2': 1.0, '3': 1.5}
-    scale = scale_map[scen_choice]
-    scen_name = scenarios[scen_choice]
-    
-    # 2. Choose Control Algorithm
-    algorithms = {
-        '1': 'Chu kỳ cố định (Fixed-Time - FT)',
-        '2': 'Cảm biến lưu lượng (Actuated Control - AC)',
-        '3': 'Tối đa hóa áp lực (Max-Pressure - MP)'
-    }
-    algo_choice = get_menu_choice("CHỌN THUẬT TOÁN ĐIỀU KHIỂN", algorithms)
-    algo_map = {'1': 'FT', '2': 'AC', '3': 'MP'}
-    algo = algo_map[algo_choice]
-    algo_name = algorithms[algo_choice]
-    
-    # 3. Choose Delay
-    print("\n=== CẤU HÌNH ĐỘ TRỄ MÔ PHỎNG (ms) ===")
-    delay_input = input("Nhập độ trễ mỗi bước (ms, mặc định 50): ").strip()
-    if not delay_input.isdigit():
-        delay = 50
-    else:
-        delay = int(delay_input)
-        
-    print("\n==================================================")
-    print(f" Đang khởi chạy mô phỏng:")
-    print(f"  - Kịch bản: {scen_name}")
-    print(f"  - Thuật toán: {algo_name}")
-    print(f"  - Độ trễ: {delay} ms/bước")
-    print("==================================================")
-    
-    # Configure SUMO command
+
+def choose_or_default(title, options, default_key):
+    if INTERACTIVE:
+        return get_choice(title, options)
+    print(f"\n=== {title} ===")
+    for k, v in options.items():
+        label = v[0] if isinstance(v, tuple) else v
+        print(f"  {k}. {label}")
+    print(f"[Non-interactive: using default = {default_key}]")
+    return default_key
+
+
+def run_simulation(scale, algo, delay):
     sumo_cmd = [
-        'sumo-gui',
-        '-c', sumocfg_path,
-        '--step-length', '0.10',
-        '--delay', str(delay),
-        '--lateral-resolution', '0',
-        '--seed', '42',
-        '--scale', str(scale),
-        '--start',        # Auto start simulation
-        '--quit-on-end'   # Auto close GUI when finished
+        'sumo-gui', '-c', sumocfg_path,
+        '--step-length', '0.10', '--delay', str(delay),
+        '--seed', '42', '--scale', str(scale),
+        '--start', '--quit-on-end',
     ]
-    
     try:
         traci.start(sumo_cmd)
     except Exception as e:
-        print(f"Lỗi khi khởi chạy SUMO-GUI: {e}")
-        print("Đảm bảo bạn đã cài đặt SUMO và thêm 'sumo-gui' vào PATH.")
+        print(f"Loi khoi chay SUMO-GUI: {e}")
         return
-        
+
     current_green_idx = 0
-    if algo in ['MP', 'AC']:
-        traci.trafficlight.setPhase(tls_id, GREEN_PHASES[current_green_idx])
-        
+    if algo in ('MP', 'AC'):
+        traci.trafficlight.setPhase(tls_id, GREEN_PHASES[0])
+
     yellow_timer = 0
-    green_timer = 0
-    
-    step_queues = []
+    green_timer  = 0
+    step_queues  = []
     vehicle_data = {}
-    step_count = 0
+    step_count   = 0
     arrived_count = 0
-    MAX_SIMULATION_TIME = 1000.0  # seconds
-    
-    # Run simulation loop
+
     while traci.simulation.getMinExpectedNumber() > 0 and traci.simulation.getTime() < MAX_SIMULATION_TIME:
-        # ==========================================
-        # 1. FIXED-TIME CONTROL (FT)
-        # ==========================================
-        if algo == 'FT':
-            pass
-            
-        # ==========================================
-        # 2. MAX-PRESSURE CONTROL (MP)
-        # ==========================================
-        elif algo == 'MP':
+        # --- Fixed-Time: no action needed ---
+        # --- Max-Pressure ---
+        if algo == 'MP':
             if yellow_timer > 0:
                 yellow_timer -= 1
                 if yellow_timer == 0:
@@ -141,25 +120,20 @@ def main():
                 action = 0
                 if green_timer >= MIN_GREEN_STEPS:
                     pressures = [
-                        sum(traci.lanearea.getLastStepVehicleNumber(det) for det in phase_detectors[0]),
-                        sum(traci.lanearea.getLastStepVehicleNumber(det) for det in phase_detectors[1]),
-                        sum(traci.lanearea.getLastStepVehicleNumber(det) for det in phase_detectors[2]),
-                        sum(traci.lanearea.getLastStepVehicleNumber(det) for det in phase_detectors[3])
+                        sum(traci.lanearea.getLastStepVehicleNumber(d) for d in phase_detectors[i])
+                        for i in range(4)
                     ]
-                    target_green_idx = int(np.argmax(pressures))
-                    if target_green_idx != current_green_idx or green_timer >= MAX_GREEN_STEPS:
+                    target = int(np.argmax(pressures))
+                    if target != current_green_idx or green_timer >= MAX_GREEN_STEPS:
                         action = 1
                 if action == 1:
-                    yellow_phase = (GREEN_PHASES[current_green_idx] + 1) % 8
-                    traci.trafficlight.setPhase(tls_id, yellow_phase)
-                    if target_green_idx == current_green_idx:
-                        target_green_idx = (current_green_idx + 1) % 4
-                    current_green_idx = target_green_idx
+                    traci.trafficlight.setPhase(tls_id, (GREEN_PHASES[current_green_idx] + 1) % 8)
+                    if target == current_green_idx:
+                        target = (current_green_idx + 1) % 4
+                    current_green_idx = target
                     yellow_timer = 30
-                    
-        # ==========================================
-        # 3. ACTUATED CONTROL (AC)
-        # ==========================================
+
+        # --- Actuated Control ---
         elif algo == 'AC':
             if yellow_timer > 0:
                 yellow_timer -= 1
@@ -170,73 +144,86 @@ def main():
                 green_timer += 1
                 action = 0
                 if green_timer >= MIN_GREEN_STEPS:
-                    active_dets = phase_detectors[current_green_idx]
-                    has_vehicles = any(traci.lanearea.getLastStepVehicleNumber(det) > 0 for det in active_dets)
-                    if not has_vehicles or green_timer >= MAX_GREEN_STEPS:
+                    active = phase_detectors[current_green_idx]
+                    if not any(traci.lanearea.getLastStepVehicleNumber(d) > 0 for d in active) \
+                       or green_timer >= MAX_GREEN_STEPS:
                         action = 1
                 if action == 1:
-                    yellow_phase = (GREEN_PHASES[current_green_idx] + 1) % 8
-                    traci.trafficlight.setPhase(tls_id, yellow_phase)
+                    traci.trafficlight.setPhase(tls_id, (GREEN_PHASES[current_green_idx] + 1) % 8)
                     current_green_idx = (current_green_idx + 1) % 4
                     yellow_timer = 30
 
+        # --- Simulation step ---
         try:
             traci.simulationStep()
-            step_count += 1
+            step_count  += 1
             arrived_count += traci.simulation.getArrivedNumber()
-            
-            # Queue data
-            q_sum = sum(traci.lanearea.getLastStepVehicleNumber(det) for det in detector_ids)
+            q_sum = sum(traci.lanearea.getLastStepVehicleNumber(d) for d in detector_ids)
             step_queues.append(q_sum)
-            
-            # Vehicle data
-            active_vehs = traci.vehicle.getIDList()
-            for veh in active_vehs:
+
+            for veh in traci.vehicle.getIDList():
                 if veh not in vehicle_data:
-                    vehicle_data[veh] = {
-                        'waiting_time': 0.0,
-                        'time_loss': 0.0
-                    }
+                    vehicle_data[veh] = {'waiting_time': 0.0, 'time_loss': 0.0}
                 vehicle_data[veh]['waiting_time'] = traci.vehicle.getAccumulatedWaitingTime(veh)
-                vehicle_data[veh]['time_loss'] = traci.vehicle.getTimeLoss(veh)
-                
-            # Log real-time info in console every 100 steps (10 seconds)
+                vehicle_data[veh]['time_loss']     = traci.vehicle.getTimeLoss(veh)
+
             if step_count % 100 == 0:
-                print(f"Bước {step_count}: Số xe đang hoạt động = {len(active_vehs)}, Tổng hàng đợi hiện tại = {q_sum}")
-                
-        except Exception as e:
-            # Handle user closing the GUI manually before the simulation finishes
-            print("\nMô phỏng bị ngắt kết nối (hoặc bạn đã đóng cửa sổ SUMO-GUI).")
+                print(f"[Buoc {step_count}] Xe={len(traci.vehicle.getIDList())}, Hangdoi={q_sum}")
+
+        except Exception:
+            print("SUMO-GUI da dong.")
             break
-            
-    # Try to close traci safely
+
     try:
         traci.close()
-    except:
+    except Exception:
         pass
-        
-    # Print summary metrics
+
     if vehicle_data:
-        avg_queue = np.mean(step_queues) if step_queues else 0.0
-        throughput = arrived_count
+        avg_queue  = np.mean(step_queues) if step_queues else 0.0
+        avg_wait    = np.mean([d['waiting_time'] for d in vehicle_data.values()])
+        avg_delay   = np.mean([d['time_loss']     for d in vehicle_data.values()])
         total_delay = sum(d['time_loss'] for d in vehicle_data.values())
-        avg_wait = np.mean([d['waiting_time'] for d in vehicle_data.values()])
-        avg_delay = np.mean([d['time_loss'] for d in vehicle_data.values()])
-        
+
         print("\n==================================================")
-        print("          KẾT QUẢ MÔ PHỎNG (SUMMARY METRICS)      ")
+        print("            KET QUA MO PHONG                          ")
         print("==================================================")
-        print(f" - Kịch bản: {scen_name}")
-        print(f" - Thuật toán: {algo_name}")
-        print(f" - Tổng số bước chạy: {step_count}")
-        print(f" - Hàng đợi trung bình (Avg Queue): {avg_queue:.2f} xe")
-        print(f" - Thời gian chờ trung bình (Avg Wait): {avg_wait:.2f} giây")
-        print(f" - Tổng xe thông qua (Throughput): {throughput} xe")
-        print(f" - Tổng thời gian chậm (Total Delay): {total_delay:.1f} giây")
-        print(f" - Thời gian chậm TB (Avg Delay/Vehicle): {avg_delay:.2f} giây")
+        print(f"  Scale  : {scale}")
+        print(f"  Algo   : {algo}")
+        print(f"  Steps  : {step_count}")
+        print(f"  Avg Queue     : {avg_queue:.2f} xe")
+        print(f"  Avg Wait      : {avg_wait:.2f} s")
+        print(f"  Throughput    : {arrived_count} xe")
+        print(f"  Avg Delay/Veh : {avg_delay:.2f} s")
         print("==================================================")
     else:
-        print("\nKhông thu thập được dữ liệu mô phỏng.")
+        print("Khong co du lieu.")
+
+
+def main():
+    print("==================================================")
+    print("      SUMO INTERACTIVE SIMULATION WATCHER          ")
+    print("==================================================")
+
+    scen_key   = choose_or_default("CHON KICH BAN", TRAFFIC_OPTIONS, '2')
+    algo_key   = choose_or_default("CHON THUAT TOAN", ALGO_OPTIONS, '2')
+    scen_name, scale = TRAFFIC_OPTIONS[scen_key]
+    algo_name  = ALGO_OPTIONS[algo_key]
+    algo       = ALGO_MAP[algo_key]
+
+    if INTERACTIVE:
+        raw = input("Do tre (ms, mac dinh 50): ").strip()
+        delay = int(raw) if raw.isdigit() else 50
+    else:
+        delay = 50
+
+    print(f"\n  Kich ban : {scen_name}")
+    print(f"  Thuat toan: {algo_name}")
+    print(f"  Do tre   : {delay} ms")
+    print("==================================================")
+
+    run_simulation(scale, algo, delay)
+
 
 if __name__ == '__main__':
     main()
