@@ -1,0 +1,1143 @@
+track_id,direction,class,movement
+1,East,car,Left Turn
+7,East,car,Straight
+8,East,car,Left Turn
+10,East,car,Right Turn
+14,East,car,Straight
+22,East,car,Straight
+21,East,car,Straight
+25,East,car,Left Turn
+27,East,truck,Stationary
+35,East,car,Left Turn
+36,East,car,Straight
+40,East,car,Straight
+41,East,car,Stationary
+43,East,car,Straight
+47,East,car,Straight
+52,East,car,Left Turn
+59,East,car,Stationary
+60,East,car,Straight
+71,East,car,Right Turn
+72,East,car,Straight
+80,East,car,Straight
+81,East,car,Left Turn
+91,East,car,Stationary
+96,East,car,Straight
+95,East,car,Straight
+99,East,car,Stationary
+157,East,car,Stationary
+171,East,car,Stationary
+172,East,car,Stationary
+174,East,car,Stationary
+182,East,car,Stationary
+193,East,car,Stationary
+196,East,car,Left Turn
+197,East,car,Straight
+225,East,car,Right Turn
+229,East,car,Right Turn
+231,East,car,Stationary
+236,East,car,Straight
+245,East,car,Straight
+250,East,car,Straight
+253,East,car,Right Turn
+254,East,car,Straight
+257,East,car,Stationary
+258,East,car,Straight
+259,East,car,Straight
+260,East,car,Left Turn
+263,East,car,Left Turn
+265,East,car,Left Turn
+271,East,car,Left Turn
+272,East,car,Left Turn
+273,East,car,Straight
+277,East,car,Straight
+281,East,car,Stationary
+291,East,car,Straight
+293,East,car,Right Turn
+321,East,car,Straight
+339,East,truck,Stationary
+337,East,car,Straight
+345,East,car,Straight
+353,East,car,Straight
+355,East,car,Straight
+377,East,car,Right Turn
+388,East,car,Stationary
+405,East,car,Stationary
+410,East,car,Stationary
+421,East,truck,Straight
+428,East,car,Stationary
+446,East,car,Straight
+449,East,car,Straight
+450,East,car,Stationary
+454,East,car,Stationary
+455,East,truck,Stationary
+457,East,car,Right Turn
+459,East,car,Stationary
+460,East,truck,Stationary
+461,East,truck,Stationary
+462,East,car,Stationary
+463,East,car,Straight
+469,East,truck,Stationary
+470,East,car,Left Turn
+471,East,car,Straight
+473,East,car,Stationary
+476,East,car,Straight
+486,East,car,Straight
+494,East,car,Straight
+493,East,truck,Stationary
+496,East,car,Stationary
+497,East,car,Stationary
+499,East,car,Straight
+502,East,car,Stationary
+503,East,truck,Stationary
+506,East,car,Straight
+510,East,car,Straight
+511,East,truck,Straight
+512,East,truck,Stationary
+516,East,car,Right Turn
+517,East,truck,Straight
+519,East,car,Stationary
+522,East,car,Left Turn
+526,East,car,Straight
+528,East,car,Stationary
+530,East,car,Left Turn
+541,East,car,Straight
+545,East,car,Straight
+549,East,car,Straight
+553,East,car,Straight
+555,East,car,Straight
+559,East,car,Straight
+563,East,car,Straight
+565,East,car,Straight
+571,East,car,Right Turn
+575,East,truck,Straight
+577,East,car,Straight
+587,East,car,Stationary
+595,East,car,Stationary
+610,East,car,Stationary
+638,East,car,Straight
+668,East,car,Stationary
+673,East,car,Stationary
+682,East,car,Stationary
+687,East,car,Stationary
+707,East,car,Stationary
+716,East,car,Left Turn
+725,East,car,Stationary
+735,East,car,Stationary
+738,East,car,Stationary
+744,East,car,Stationary
+747,East,car,Straight
+759,East,car,Right Turn
+766,East,car,Stationary
+767,East,car,Straight
+769,East,car,Stationary
+772,East,car,Right Turn
+773,East,car,Straight
+765,East,truck,Straight
+785,East,car,Left Turn
+786,East,car,Right Turn
+787,East,car,Stationary
+790,East,car,Right Turn
+793,East,car,Stationary
+794,East,car,Right Turn
+797,East,car,Left Turn
+800,East,car,Straight
+802,East,car,Right Turn
+804,East,car,Straight
+815,East,truck,Straight
+819,East,truck,Stationary
+824,East,car,Left Turn
+829,East,car,Straight
+832,East,car,Straight
+836,East,car,Left Turn
+838,East,car,Straight
+840,East,car,Straight
+848,East,car,Straight
+851,East,car,Straight
+859,East,car,Straight
+863,East,car,Straight
+876,East,car,Stationary
+874,East,car,Straight
+896,East,car,Stationary
+913,East,car,Stationary
+919,East,car,Right Turn
+921,East,car,Stationary
+924,East,car,Straight
+926,East,car,Stationary
+944,East,car,Stationary
+946,East,car,Left Turn
+959,East,car,Stationary
+970,East,car,Right Turn
+971,East,car,Stationary
+975,East,car,Straight
+981,East,car,Straight
+980,East,car,Straight
+982,East,car,Stationary
+983,East,car,Straight
+985,East,car,Straight
+992,East,car,Straight
+993,East,car,Straight
+995,East,car,Straight
+998,East,car,Left Turn
+1005,East,car,Straight
+1006,East,car,Stationary
+1017,East,car,Straight
+1018,East,car,Right Turn
+1012,East,car,Straight
+1020,East,car,Straight
+1023,East,car,Straight
+1025,East,car,Stationary
+1026,East,car,Straight
+1031,East,car,Straight
+1036,East,car,Stationary
+1035,East,car,Straight
+1037,East,car,Straight
+1040,East,car,Stationary
+1043,East,car,Straight
+1045,East,car,Left Turn
+1049,East,car,Stationary
+1072,East,car,Straight
+1087,East,car,Stationary
+1094,East,car,Straight
+1098,East,car,Straight
+1100,East,car,Stationary
+1103,East,truck,Stationary
+1106,East,car,Stationary
+1110,East,car,Stationary
+1112,East,car,Straight
+1124,East,car,Straight
+1130,East,car,Stationary
+1137,East,car,Stationary
+1138,East,car,Straight
+1149,East,car,Stationary
+1151,East,car,Stationary
+1166,East,car,Stationary
+1167,East,truck,Stationary
+1196,East,car,Right Turn
+1197,East,truck,Stationary
+1198,East,car,Stationary
+1202,East,car,Straight
+1206,East,car,Right Turn
+1208,East,car,Straight
+1211,East,car,Right Turn
+1214,East,car,Right Turn
+1220,East,car,Left Turn
+1221,East,car,Stationary
+1233,East,car,Left Turn
+1245,East,car,Straight
+1252,East,car,Straight
+1256,East,car,Straight
+1262,East,car,Left Turn
+1266,East,car,Straight
+1273,East,car,Straight
+1282,East,car,Stationary
+1286,East,car,Straight
+1288,East,car,Stationary
+1284,East,car,Straight
+1290,East,car,Stationary
+1292,East,car,Straight
+1296,East,car,Straight
+1299,East,car,Straight
+1301,East,car,Stationary
+1305,East,car,Right Turn
+1302,East,car,Straight
+1315,East,car,Straight
+1320,East,car,Left Turn
+1321,East,car,Left Turn
+1324,East,car,Left Turn
+1325,East,car,Straight
+1326,East,car,Stationary
+1329,East,car,Straight
+1330,East,car,Straight
+1332,East,car,Straight
+1333,East,car,Straight
+1335,East,car,Straight
+1337,East,car,Straight
+1336,East,car,Stationary
+1341,East,car,Straight
+1343,East,car,Left Turn
+1345,East,car,Straight
+1348,East,car,Stationary
+1385,East,car,Stationary
+1403,East,car,Stationary
+1397,East,car,Straight
+1423,East,truck,Stationary
+1425,East,car,Straight
+1451,East,car,Straight
+1488,East,car,Straight
+1524,East,car,Stationary
+1531,East,car,Stationary
+1537,East,car,Straight
+1535,East,car,Straight
+1536,East,car,Straight
+1544,East,car,Stationary
+1545,East,car,Stationary
+1548,East,car,Straight
+1552,East,truck,Straight
+1561,East,car,Straight
+1556,East,car,Straight
+1563,East,car,Straight
+1567,East,truck,Straight
+1568,East,car,Left Turn
+1573,East,car,Straight
+1576,East,car,Straight
+1574,East,car,Straight
+1578,East,car,Straight
+1590,East,car,Stationary
+1585,East,car,Straight
+1594,East,car,Stationary
+1602,East,car,Straight
+1609,East,car,Left Turn
+1601,East,car,Straight
+1616,East,car,Stationary
+1625,East,truck,Right Turn
+1633,East,car,Left Turn
+1638,East,car,Stationary
+1635,East,car,Straight
+1639,East,car,Straight
+1640,East,car,Left Turn
+1651,East,car,Straight
+1656,East,car,Straight
+1658,East,car,Straight
+1661,East,car,Stationary
+1662,East,car,Straight
+1664,East,car,Straight
+1668,East,car,Straight
+1742,East,car,Right Turn
+1752,East,car,Stationary
+1757,East,car,Straight
+1762,East,car,Stationary
+1819,East,car,Straight
+1820,East,car,Stationary
+1828,East,car,Right Turn
+1829,East,car,Straight
+1830,East,car,Straight
+1826,East,truck,Straight
+1832,East,car,Stationary
+1833,East,car,Right Turn
+1834,East,car,Straight
+1835,East,car,Straight
+1844,East,car,Right Turn
+1846,East,car,Stationary
+1841,East,car,Straight
+1848,East,car,Straight
+1853,East,car,Straight
+1852,East,car,Straight
+1858,East,car,Straight
+1861,East,car,Stationary
+1870,East,car,Stationary
+1874,East,car,Stationary
+1886,East,car,Stationary
+1887,East,car,Straight
+1897,East,car,Stationary
+1905,East,car,Straight
+1913,East,car,Stationary
+1919,East,car,Stationary
+1923,East,car,Straight
+1931,East,car,Stationary
+1942,East,car,Stationary
+1950,East,car,Stationary
+1957,East,car,Stationary
+1962,East,car,Stationary
+1965,East,car,Stationary
+1971,East,car,Straight
+1972,East,car,Straight
+1976,East,car,Stationary
+1969,East,car,Straight
+2,North,car,Straight
+3,North,car,Straight
+5,North,car,Left Turn
+6,North,car,Left Turn
+9,North,car,Straight
+12,North,car,Right Turn
+15,North,car,Stationary
+32,North,car,Straight
+83,North,car,Left Turn
+88,North,car,Left Turn
+90,North,car,Right Turn
+92,North,car,Straight
+100,North,car,Straight
+101,North,car,Straight
+102,North,car,Straight
+107,North,car,Right Turn
+114,North,car,Right Turn
+122,North,car,Straight
+126,North,car,Straight
+131,North,car,Stationary
+138,North,car,Right Turn
+139,North,car,Right Turn
+141,North,car,Stationary
+148,North,car,Right Turn
+149,North,car,Straight
+151,North,car,Right Turn
+154,North,car,Straight
+156,North,car,Straight
+159,North,car,Straight
+161,North,car,Straight
+166,North,car,Left Turn
+167,North,car,Right Turn
+169,North,car,Straight
+176,North,car,Straight
+179,North,car,Right Turn
+183,North,car,Left Turn
+192,North,car,Stationary
+198,North,car,Straight
+220,North,car,Straight
+237,North,car,Straight
+296,North,car,Straight
+315,North,car,Stationary
+323,North,truck,Straight
+326,North,car,Stationary
+329,North,car,Stationary
+333,North,car,Straight
+340,North,car,Right Turn
+342,North,car,Straight
+344,North,car,Straight
+346,North,car,Right Turn
+350,North,car,Right Turn
+356,North,car,Straight
+375,North,car,Stationary
+379,North,truck,Straight
+381,North,car,Left Turn
+411,North,car,Right Turn
+483,North,car,Right Turn
+518,North,car,Right Turn
+525,North,car,Stationary
+535,North,car,Stationary
+539,North,truck,Stationary
+542,North,truck,Stationary
+544,North,truck,Stationary
+547,North,car,Stationary
+556,North,car,Stationary
+562,North,car,Stationary
+564,North,car,Straight
+569,North,truck,Stationary
+572,North,car,Stationary
+573,North,car,Stationary
+583,North,car,Stationary
+599,North,car,Stationary
+601,North,car,Stationary
+605,North,truck,Stationary
+609,North,car,Stationary
+619,North,car,Straight
+622,North,car,Stationary
+623,North,car,Straight
+631,North,car,Right Turn
+635,North,car,Left Turn
+636,North,car,Straight
+628,North,car,Straight
+639,North,truck,Straight
+642,North,car,Straight
+647,North,car,Straight
+650,North,car,Straight
+653,North,car,Straight
+657,North,car,Stationary
+658,North,car,Straight
+661,North,car,Stationary
+666,North,car,Left Turn
+671,North,car,Straight
+674,North,car,Stationary
+680,North,car,Right Turn
+678,North,truck,Straight
+689,North,car,Stationary
+692,North,car,Left Turn
+702,North,car,Straight
+709,North,car,Right Turn
+750,North,car,Stationary
+762,North,car,Straight
+779,North,car,Left Turn
+865,North,car,Stationary
+871,North,car,Left Turn
+880,North,car,Straight
+883,North,car,Right Turn
+884,North,car,Straight
+885,North,car,Right Turn
+891,North,car,Right Turn
+898,North,car,Straight
+904,North,car,Straight
+923,North,car,Straight
+955,North,car,Straight
+1044,North,car,Right Turn
+1046,North,car,Straight
+1055,North,car,Right Turn
+1063,North,car,Straight
+1062,North,car,Stationary
+1064,North,car,Straight
+1065,North,car,Stationary
+1069,North,car,Straight
+1080,North,car,Stationary
+1083,North,car,Straight
+1101,North,truck,Stationary
+1105,North,car,Straight
+1119,North,car,Straight
+1120,North,car,Stationary
+1123,North,car,Straight
+1127,North,car,Straight
+1128,North,car,Straight
+1132,North,truck,Straight
+1134,North,car,Straight
+1143,North,car,Straight
+1145,North,car,Straight
+1146,North,car,Straight
+1156,North,car,Straight
+1164,North,car,Straight
+1165,North,car,Right Turn
+1170,North,car,Straight
+1172,North,car,Right Turn
+1178,North,car,Stationary
+1180,North,car,Straight
+1181,North,truck,Right Turn
+1185,North,car,Straight
+1186,North,car,Straight
+1187,North,truck,Straight
+1191,North,car,Straight
+1195,North,car,Stationary
+1235,North,car,Straight
+1241,North,car,Straight
+1249,North,car,Stationary
+1269,North,car,Stationary
+1272,North,car,Stationary
+1287,North,car,Stationary
+1308,North,car,Stationary
+1313,North,car,Stationary
+1322,North,car,Stationary
+1334,North,car,Stationary
+1360,North,car,Left Turn
+1361,North,car,Straight
+1362,North,car,Stationary
+1363,North,car,Right Turn
+1366,North,car,Straight
+1367,North,car,Right Turn
+1370,North,car,Straight
+1374,North,car,Left Turn
+1380,North,car,Right Turn
+1381,North,car,Straight
+1382,North,car,Left Turn
+1383,North,car,Straight
+1386,North,car,Straight
+1388,North,car,Right Turn
+1389,North,car,Straight
+1390,North,car,Straight
+1392,North,car,Right Turn
+1393,North,car,Straight
+1405,North,car,Straight
+1413,North,car,Straight
+1421,North,car,Straight
+1424,North,car,Right Turn
+1426,North,car,Straight
+1427,North,truck,Straight
+1435,North,car,Straight
+1442,North,car,Straight
+1433,North,car,Straight
+1441,North,car,Straight
+1444,North,car,Straight
+1458,North,truck,Straight
+1466,North,car,Straight
+1468,North,car,Straight
+1469,North,car,Right Turn
+1551,North,car,Straight
+1564,North,car,Stationary
+1606,North,car,Stationary
+1632,North,car,Straight
+1680,North,car,Stationary
+1686,North,car,Right Turn
+1693,North,car,Stationary
+1699,North,truck,Straight
+1702,North,car,Straight
+1705,North,car,Right Turn
+1706,North,car,Straight
+1709,North,car,Straight
+1711,North,car,Straight
+1715,North,car,Straight
+1718,North,car,Straight
+1724,North,car,Straight
+1725,North,car,Straight
+1729,North,car,Straight
+1736,North,car,Straight
+1731,North,car,Straight
+1740,North,car,Right Turn
+1741,North,car,Straight
+1746,North,car,Right Turn
+1745,North,car,Straight
+1770,North,car,Straight
+1793,North,car,Straight
+1854,North,car,Straight
+1866,North,truck,Right Turn
+1889,North,car,Stationary
+1898,North,car,Stationary
+1899,North,car,Stationary
+1900,North,car,Straight
+1903,North,car,Straight
+1904,North,car,Straight
+1908,North,car,Straight
+1909,North,car,Right Turn
+1911,North,car,Stationary
+1915,North,car,Straight
+1930,North,car,Right Turn
+1939,North,car,Straight
+1948,North,car,Stationary
+1954,North,car,Right Turn
+1958,North,car,Stationary
+1975,North,car,Stationary
+1974,North,car,Stationary
+4,West,car,Straight
+29,West,car,Straight
+51,West,car,Stationary
+66,West,car,Stationary
+70,West,car,Stationary
+89,West,car,Straight
+106,West,car,Straight
+117,West,car,Right Turn
+128,West,car,Straight
+129,West,car,Straight
+170,West,car,Right Turn
+200,West,car,Straight
+203,West,car,Straight
+207,West,car,Straight
+205,West,car,Right Turn
+210,West,car,Stationary
+212,West,car,Straight
+211,West,car,Right Turn
+216,West,car,Straight
+219,West,car,Straight
+222,West,car,Straight
+227,West,car,Straight
+239,West,car,Right Turn
+240,West,car,Straight
+249,West,car,Straight
+284,West,car,Straight
+290,West,car,Straight
+300,West,car,Straight
+311,West,car,Straight
+312,West,car,Stationary
+314,West,car,Straight
+319,West,car,Straight
+322,West,car,Stationary
+336,West,car,Straight
+343,West,car,Stationary
+364,West,car,Stationary
+373,West,car,Stationary
+380,West,car,Straight
+386,West,car,Right Turn
+387,West,car,Straight
+397,West,car,Straight
+402,West,car,Straight
+403,West,car,Straight
+401,West,car,Straight
+408,West,car,Straight
+409,West,car,Straight
+407,West,car,Right Turn
+415,West,car,Straight
+414,West,car,Straight
+416,West,car,Straight
+418,West,car,Straight
+424,West,car,Straight
+425,West,car,Straight
+431,West,car,Straight
+436,West,car,Straight
+443,West,car,Straight
+444,West,car,Straight
+435,West,car,Straight
+456,West,car,Stationary
+566,West,car,Right Turn
+578,West,car,Straight
+579,West,car,Straight
+588,West,car,Straight
+594,West,car,Straight
+593,West,car,Straight
+600,West,car,Straight
+603,West,car,Stationary
+614,West,truck,Straight
+621,West,car,Stationary
+625,West,car,Straight
+634,West,car,Stationary
+643,West,car,Stationary
+655,West,car,Stationary
+664,West,car,Straight
+676,West,car,Stationary
+693,West,car,Straight
+690,West,car,Stationary
+700,West,car,Straight
+701,West,car,Straight
+711,West,car,Straight
+712,West,car,Straight
+713,West,car,Straight
+721,West,car,Straight
+723,West,car,Straight
+728,West,car,Straight
+729,West,car,Straight
+733,West,car,Straight
+736,West,car,Straight
+737,West,car,Straight
+739,West,car,Straight
+740,West,car,Straight
+743,West,car,Straight
+751,West,car,Straight
+752,West,truck,Straight
+755,West,car,Straight
+756,West,car,Straight
+760,West,car,Straight
+761,West,car,Straight
+764,West,car,Straight
+775,West,car,Straight
+778,West,car,Right Turn
+783,West,car,Straight
+810,West,car,Right Turn
+812,West,car,Stationary
+821,West,car,Right Turn
+823,West,car,Right Turn
+860,West,car,Straight
+870,West,car,Stationary
+877,West,car,Straight
+881,West,car,Straight
+894,West,car,Straight
+897,West,car,Straight
+911,West,car,Straight
+925,West,car,Straight
+929,West,car,Straight
+930,West,car,Right Turn
+933,West,car,Straight
+937,West,car,Straight
+942,West,car,Straight
+939,West,car,Right Turn
+945,West,car,Straight
+951,West,car,Straight
+953,West,car,Right Turn
+956,West,car,Straight
+958,West,car,Straight
+961,West,truck,Straight
+962,West,car,Straight
+964,West,car,Straight
+963,West,car,Straight
+968,West,car,Straight
+973,West,car,Straight
+990,West,truck,Straight
+994,West,truck,Straight
+996,West,car,Straight
+1004,West,car,Straight
+1008,West,car,Straight
+1007,West,car,Straight
+1010,West,car,Straight
+1013,West,car,Straight
+1015,West,car,Straight
+1014,West,car,Straight
+1011,West,car,Straight
+1016,West,car,Straight
+1022,West,car,Straight
+1024,West,car,Straight
+1021,West,car,Straight
+1051,West,car,Straight
+1070,West,car,Straight
+1090,West,car,Straight
+1104,West,car,Straight
+1147,West,car,Right Turn
+1155,West,car,Straight
+1168,West,car,Straight
+1182,West,car,Straight
+1199,West,car,Straight
+1215,West,truck,Straight
+1216,West,car,Straight
+1223,West,car,Straight
+1224,West,car,Stationary
+1227,West,car,Straight
+1228,West,car,Straight
+1230,West,car,Straight
+1234,West,car,Straight
+1239,West,car,Straight
+1248,West,car,Straight
+1255,West,car,Straight
+1259,West,car,Straight
+1263,West,car,Stationary
+1274,West,car,Straight
+1280,West,car,Straight
+1294,West,car,Straight
+1312,West,car,Right Turn
+1316,West,car,Straight
+1344,West,car,Straight
+1358,West,car,Straight
+1375,West,car,Straight
+1399,West,truck,Straight
+1401,West,car,Straight
+1422,West,car,Stationary
+1429,West,car,Straight
+1438,West,car,Stationary
+1449,West,car,Straight
+1460,West,car,Stationary
+1464,West,car,Stationary
+1471,West,car,Straight
+1476,West,car,Straight
+1478,West,car,Straight
+1480,West,car,Straight
+1485,West,car,Straight
+1493,West,car,Straight
+1510,West,car,Straight
+1511,West,car,Right Turn
+1518,West,car,Straight
+1521,West,car,Straight
+1530,West,car,Straight
+1529,West,car,Right Turn
+1534,West,car,Straight
+1538,West,car,Straight
+1539,West,car,Right Turn
+1541,West,car,Right Turn
+1547,West,car,Right Turn
+1570,West,truck,Straight
+1580,West,car,Straight
+1603,West,car,Straight
+1608,West,car,Straight
+1614,West,car,Straight
+1617,West,car,Straight
+1629,West,car,Stationary
+1636,West,car,Straight
+1647,West,truck,Stationary
+1653,West,car,Stationary
+1657,West,car,Stationary
+1665,West,car,Stationary
+1669,West,car,Stationary
+1675,West,car,Straight
+1682,West,car,Straight
+1684,West,car,Stationary
+1689,West,car,Straight
+1691,West,car,Stationary
+1696,West,truck,Stationary
+1701,West,truck,Stationary
+1704,West,car,Stationary
+1707,West,truck,Stationary
+1712,West,car,Straight
+1713,West,truck,Stationary
+1716,West,truck,Stationary
+1720,West,car,Stationary
+1721,West,truck,Stationary
+1723,West,car,Stationary
+1730,West,car,Stationary
+1733,West,truck,Stationary
+1738,West,car,Stationary
+1749,West,car,Stationary
+1751,West,car,Stationary
+1754,West,car,Stationary
+1756,West,truck,Stationary
+1759,West,car,Stationary
+1760,West,truck,Stationary
+1763,West,car,Straight
+1708,West,car,Straight
+1734,West,car,Straight
+1775,West,car,Straight
+1780,West,car,Straight
+1782,West,car,Straight
+1785,West,car,Straight
+1790,West,car,Straight
+1791,West,car,Right Turn
+1794,West,car,Right Turn
+1798,West,car,Straight
+1799,West,car,Straight
+1803,West,car,Straight
+1804,West,car,Straight
+1808,West,car,Straight
+1814,West,car,Straight
+1812,West,car,Straight
+1818,West,car,Straight
+1821,West,car,Right Turn
+1864,West,car,Straight
+1865,West,car,Stationary
+1867,West,car,Straight
+1868,West,car,Straight
+1869,West,car,Straight
+1876,West,truck,Stationary
+1881,West,car,Straight
+1902,West,truck,Stationary
+1914,West,car,Straight
+1916,West,truck,Stationary
+1920,West,truck,Stationary
+1925,West,car,Stationary
+1926,West,car,Stationary
+1927,West,car,Stationary
+1933,West,car,Straight
+1936,West,car,Straight
+1941,West,car,Straight
+1944,West,car,Right Turn
+1946,West,car,Straight
+1953,West,car,Straight
+1949,West,car,Right Turn
+1970,West,car,Right Turn
+1977,West,car,Straight
+1979,West,car,Straight
+1987,West,car,Stationary
+11,South,car,Straight
+13,South,car,Straight
+16,South,car,Stationary
+17,South,car,Stationary
+18,South,car,Stationary
+20,South,car,Straight
+48,South,car,Stationary
+38,South,truck,Stationary
+65,South,car,Straight
+73,South,car,Right Turn
+74,South,car,Straight
+75,South,car,Straight
+78,South,car,Straight
+82,South,car,Stationary
+85,South,car,Stationary
+87,South,car,Straight
+97,South,car,Stationary
+98,South,car,Stationary
+104,South,car,Stationary
+108,South,car,Straight
+121,South,car,Straight
+123,South,car,Straight
+124,South,car,Straight
+134,South,car,Straight
+135,South,car,Straight
+140,South,car,Straight
+142,South,car,Straight
+145,South,car,Straight
+146,South,car,Straight
+147,South,car,Straight
+155,South,car,Straight
+158,South,car,Straight
+173,South,car,Straight
+178,South,car,Straight
+181,South,car,Straight
+187,South,car,Straight
+189,South,car,Left Turn
+191,South,car,Straight
+202,South,car,Straight
+206,South,car,Straight
+208,South,car,Stationary
+209,South,car,Stationary
+218,South,car,Stationary
+241,South,car,Stationary
+244,South,car,Straight
+269,South,car,Straight
+270,South,car,Stationary
+276,South,car,Stationary
+279,South,car,Straight
+287,South,car,Right Turn
+297,South,car,Straight
+299,South,car,Stationary
+302,South,car,Straight
+303,South,car,Straight
+304,South,car,Stationary
+309,South,car,Straight
+324,South,car,Stationary
+325,South,car,Straight
+328,South,car,Straight
+338,South,car,Straight
+348,South,car,Straight
+354,South,car,Straight
+357,South,car,Straight
+359,South,car,Straight
+361,South,car,Straight
+369,South,car,Straight
+374,South,car,Straight
+378,South,car,Straight
+383,South,car,Straight
+384,South,car,Stationary
+385,South,car,Straight
+389,South,car,Stationary
+393,South,car,Straight
+400,South,car,Stationary
+404,South,car,Straight
+419,South,car,Stationary
+441,South,car,Stationary
+474,South,car,Straight
+478,South,car,Straight
+481,South,car,Straight
+487,South,car,Stationary
+489,South,car,Stationary
+492,South,car,Stationary
+498,South,car,Stationary
+504,South,car,Stationary
+513,South,car,Straight
+509,South,bus,Straight
+521,South,car,Stationary
+540,South,car,Straight
+552,South,car,Stationary
+570,South,car,Stationary
+574,South,car,Stationary
+581,South,car,Straight
+589,South,car,Straight
+590,South,car,Straight
+592,South,car,Straight
+596,South,car,Straight
+602,South,car,Straight
+608,South,car,Straight
+611,South,car,Straight
+612,South,car,Straight
+620,South,car,Straight
+626,South,car,Straight
+641,South,car,Straight
+656,South,car,Straight
+672,South,car,Straight
+679,South,car,Straight
+691,South,car,Straight
+698,South,car,Straight
+705,South,car,Straight
+776,South,car,Straight
+784,South,car,Straight
+796,South,car,Stationary
+806,South,car,Straight
+809,South,car,Straight
+811,South,car,Stationary
+813,South,car,Stationary
+820,South,car,Straight
+826,South,car,Stationary
+831,South,car,Straight
+844,South,car,Straight
+850,South,car,Stationary
+862,South,car,Stationary
+879,South,truck,Stationary
+888,South,car,Straight
+889,South,truck,Straight
+906,South,car,Straight
+907,South,car,Stationary
+916,South,car,Straight
+920,South,car,Stationary
+922,South,car,Straight
+927,South,car,Stationary
+931,South,car,Straight
+940,South,car,Stationary
+965,South,car,Straight
+966,South,car,Straight
+1032,South,car,Straight
+1041,South,car,Stationary
+1047,South,car,Stationary
+1059,South,car,Stationary
+1066,South,car,Straight
+1068,South,car,Straight
+1071,South,car,Straight
+1076,South,car,Straight
+1077,South,car,Straight
+1078,South,car,Straight
+1081,South,car,Straight
+1084,South,car,Straight
+1085,South,car,Straight
+1088,South,car,Stationary
+1089,South,car,Straight
+1107,South,car,Straight
+1113,South,car,Straight
+1114,South,car,Straight
+1118,South,car,Straight
+1121,South,car,Straight
+1122,South,car,Stationary
+1126,South,car,Straight
+1135,South,car,Stationary
+1140,South,car,Straight
+1150,South,car,Stationary
+1159,South,car,Straight
+1174,South,car,Straight
+1175,South,car,Straight
+1193,South,car,Straight
+1200,South,car,Straight
+1207,South,car,Stationary
+1210,South,car,Straight
+1212,South,car,Stationary
+1225,South,car,Stationary
+1231,South,car,Stationary
+1237,South,car,Stationary
+1244,South,car,Stationary
+1250,South,car,Stationary
+1267,South,car,Straight
+1278,South,car,Straight
+1291,South,car,Straight
+1297,South,car,Stationary
+1307,South,car,Straight
+1309,South,car,Stationary
+1319,South,car,Stationary
+1338,South,car,Stationary
+1339,South,car,Stationary
+1340,South,car,Straight
+1347,South,car,Straight
+1350,South,car,Straight
+1351,South,car,Straight
+1352,South,car,Stationary
+1355,South,car,Straight
+1368,South,car,Stationary
+1379,South,car,Stationary
+1404,South,car,Stationary
+1406,South,car,Straight
+1415,South,car,Straight
+1416,South,car,Straight
+1420,South,car,Stationary
+1434,South,car,Straight
+1439,South,car,Straight
+1440,South,car,Straight
+1443,South,car,Straight
+1446,South,car,Straight
+1447,South,car,Straight
+1450,South,car,Straight
+1452,South,car,Straight
+1456,South,car,Straight
+1457,South,car,Straight
+1470,South,car,Straight
+1475,South,car,Stationary
+1512,South,car,Straight
+1526,South,car,Stationary
+1540,South,car,Stationary
+1559,South,car,Straight
+1565,South,car,Stationary
+1571,South,car,Straight
+1575,South,car,Stationary
+1583,South,car,Straight
+1584,South,car,Stationary
+1588,South,car,Stationary
+1591,South,car,Stationary
+1592,South,car,Straight
+1593,South,car,Straight
+1596,South,car,Straight
+1598,South,car,Stationary
+1604,South,car,Stationary
+1618,South,car,Stationary
+1619,South,car,Stationary
+1621,South,car,Straight
+1624,South,car,Stationary
+1641,South,car,Straight
+1642,South,car,Straight
+1645,South,car,Straight
+1648,South,car,Stationary
+1652,South,car,Straight
+1659,South,car,Stationary
+1667,South,car,Stationary
+1670,South,car,Stationary
+1672,South,car,Stationary
+1674,South,car,Stationary
+1676,South,car,Stationary
+1678,South,car,Right Turn
+1679,South,car,Stationary
+1683,South,car,Straight
+1688,South,car,Straight
+1690,South,car,Stationary
+1726,South,car,Straight
+1753,South,car,Stationary
+1767,South,car,Straight
+1772,South,car,Straight
+1778,South,car,Stationary
+1786,South,car,Straight
+1792,South,car,Straight
+1797,South,car,Stationary
+1805,South,car,Stationary
+1806,South,car,Straight
+1837,South,car,Stationary
+1838,South,car,Straight
+1840,South,car,Straight
+1845,South,car,Stationary
+1849,South,car,Straight
+1860,South,car,Stationary
+1872,South,car,Stationary
+1871,South,car,Straight
+1875,South,car,Stationary
+1877,South,car,Straight
+1885,South,car,Stationary
+1890,South,car,Stationary
+1895,South,car,Straight
+1894,South,car,Straight
+1907,South,car,Straight
+1912,South,car,Straight
+1943,South,car,Straight
+1945,South,car,Stationary
+1955,South,car,Stationary
+1956,South,car,Stationary
+1959,South,car,Stationary
+1966,South,car,Stationary
+1973,South,car,Stationary
+1978,South,car,Stationary
+1980,South,car,Straight

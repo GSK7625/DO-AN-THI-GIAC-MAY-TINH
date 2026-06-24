@@ -1,0 +1,206 @@
+{
+  "East": {
+    "n_vehicles_total": 325,
+    "n_vehicles_completed": 325,
+    "completion_rate": 1.0,
+    "avg_control_delay": 9.55799097449676,
+    "avg_stopped_delay": 5.431794871794868,
+    "avg_speed_ms": 2.4594804286284555,
+    "avg_speed_kmh": 8.85412954306244,
+    "total_throughput": 325,
+    "throughput_per_hour": 1350.2077242652717,
+    "measurement_duration": 866.5333333333333,
+    "overall_los": "B",
+    "lane_metrics": {
+      "3": {
+        "lane_id": "3",
+        "throughput": 161,
+        "n_vehicles_completed": 161,
+        "n_vehicles_total": 161,
+        "avg_control_delay": 8.604073102534274,
+        "avg_stopped_delay": 5.072256728778463,
+        "avg_speed": 2.3172594311402808,
+        "measured_flow": 668.8721341744885,
+        "los": "B",
+        "completion_rate": 1.0
+      },
+      "2": {
+        "lane_id": "2",
+        "throughput": 24,
+        "n_vehicles_completed": 24,
+        "n_vehicles_total": 24,
+        "avg_control_delay": 23.508036570786714,
+        "avg_stopped_delay": 18.827777777777793,
+        "avg_speed": 1.9535221107900813,
+        "measured_flow": 99.70764733035851,
+        "los": "D",
+        "completion_rate": 1.0
+      },
+      "1": {
+        "lane_id": "1",
+        "throughput": 140,
+        "n_vehicles_completed": 140,
+        "n_vehicles_total": 140,
+        "avg_control_delay": 8.263560139318198,
+        "avg_stopped_delay": 3.5488095238095188,
+        "avg_speed": 2.7097702873692917,
+        "measured_flow": 581.6279427604247,
+        "los": "B",
+        "completion_rate": 1.0
+      }
+    }
+  },
+  "North": {
+    "n_vehicles_total": 228,
+    "n_vehicles_completed": 228,
+    "completion_rate": 1.0,
+    "avg_control_delay": 10.601165367555948,
+    "avg_stopped_delay": 5.976023391812885,
+    "avg_speed_ms": 2.813689269407355,
+    "avg_speed_kmh": 10.12928136986648,
+    "total_throughput": 228,
+    "throughput_per_hour": 947.2226496384059,
+    "measurement_duration": 866.5333333333333,
+    "overall_los": "C",
+    "lane_metrics": {
+      "2": {
+        "lane_id": "2",
+        "throughput": 76,
+        "n_vehicles_completed": 76,
+        "n_vehicles_total": 76,
+        "avg_control_delay": 12.255820227026595,
+        "avg_stopped_delay": 7.477631578947412,
+        "avg_speed": 2.9150228911367946,
+        "measured_flow": 315.740883212802,
+        "los": "C",
+        "completion_rate": 1.0
+      },
+      "3": {
+        "lane_id": "3",
+        "throughput": 69,
+        "n_vehicles_completed": 69,
+        "n_vehicles_total": 69,
+        "avg_control_delay": 11.033012724743324,
+        "avg_stopped_delay": 6.072946859903411,
+        "avg_speed": 2.7685684400795596,
+        "measured_flow": 286.6594860747807,
+        "los": "C",
+        "completion_rate": 1.0
+      },
+      "1": {
+        "lane_id": "1",
+        "throughput": 83,
+        "n_vehicles_completed": 83,
+        "n_vehicles_total": 83,
+        "avg_control_delay": 8.7270540788126,
+        "avg_stopped_delay": 4.520481927710833,
+        "avg_speed": 2.7584119437709758,
+        "measured_flow": 344.82228035082323,
+        "los": "B",
+        "completion_rate": 1.0
+      }
+    }
+  },
+  "West": {
+    "n_vehicles_total": 265,
+    "n_vehicles_completed": 265,
+    "completion_rate": 1.0,
+    "avg_control_delay": 11.905202601755741,
+    "avg_stopped_delay": 7.434842767295597,
+    "avg_speed_ms": 3.117850465007077,
+    "avg_speed_kmh": 11.224261674025477,
+    "total_throughput": 265,
+    "throughput_per_hour": 1100.9386059393753,
+    "measurement_duration": 866.5333333333333,
+    "overall_los": "C",
+    "lane_metrics": {
+      "1": {
+        "lane_id": "1",
+        "throughput": 76,
+        "n_vehicles_completed": 76,
+        "n_vehicles_total": 76,
+        "avg_control_delay": 13.38172638087784,
+        "avg_stopped_delay": 8.635526315789468,
+        "avg_speed": 3.098081331751131,
+        "measured_flow": 315.740883212802,
+        "los": "C",
+        "completion_rate": 1.0
+      },
+      "2": {
+        "lane_id": "2",
+        "throughput": 59,
+        "n_vehicles_completed": 59,
+        "n_vehicles_total": 59,
+        "avg_control_delay": 17.156154005570492,
+        "avg_stopped_delay": 12.146327683615809,
+        "avg_speed": 3.0867429389803567,
+        "measured_flow": 245.11463302046468,
+        "los": "C",
+        "completion_rate": 1.0
+      },
+      "3": {
+        "lane_id": "3",
+        "throughput": 130,
+        "n_vehicles_completed": 130,
+        "n_vehicles_total": 130,
+        "avg_control_delay": 8.658879986076125,
+        "avg_stopped_delay": 4.594615384615392,
+        "avg_speed": 3.1435258354919107,
+        "measured_flow": 540.0830897061087,
+        "los": "B",
+        "completion_rate": 1.0
+      }
+    }
+  },
+  "South": {
+    "n_vehicles_total": 266,
+    "n_vehicles_completed": 266,
+    "completion_rate": 1.0,
+    "avg_control_delay": 10.869998127230312,
+    "avg_stopped_delay": 7.701127819548866,
+    "avg_speed_ms": 1.8708840716343553,
+    "avg_speed_kmh": 6.735182657883679,
+    "total_throughput": 266,
+    "throughput_per_hour": 1105.093091244807,
+    "measurement_duration": 866.5333333333333,
+    "overall_los": "C",
+    "lane_metrics": {
+      "1": {
+        "lane_id": "1",
+        "throughput": 77,
+        "n_vehicles_completed": 77,
+        "n_vehicles_total": 77,
+        "avg_control_delay": 6.317065284534912,
+        "avg_stopped_delay": 2.731601731601742,
+        "avg_speed": 2.7381226374218315,
+        "measured_flow": 319.8953685182336,
+        "los": "B",
+        "completion_rate": 1.0
+      },
+      "3": {
+        "lane_id": "3",
+        "throughput": 98,
+        "n_vehicles_completed": 98,
+        "n_vehicles_total": 98,
+        "avg_control_delay": 15.657171833259783,
+        "avg_stopped_delay": 12.959863945578226,
+        "avg_speed": 0.9045979627352083,
+        "measured_flow": 407.1395599322973,
+        "los": "C",
+        "completion_rate": 1.0
+      },
+      "2": {
+        "lane_id": "2",
+        "throughput": 91,
+        "n_vehicles_completed": 91,
+        "n_vehicles_total": 91,
+        "avg_control_delay": 9.567061926094677,
+        "avg_stopped_delay": 6.242857142857118,
+        "avg_speed": 2.177682633244034,
+        "measured_flow": 378.0581627942761,
+        "los": "B",
+        "completion_rate": 1.0
+      }
+    }
+  }
+}
