@@ -39,12 +39,13 @@ def get_menu_choice(title: str, options: dict) -> str:
     """Hiển thị menu và yêu cầu người dùng chọn một tùy chọn hợp lệ."""
     print(f"\n=== {title} ===")
     for k, v in options.items():
-        print(f"  {k}. {v}")
+        label = v[0] if isinstance(v, tuple) else v
+        print(f"  {k}. {label}")
     while True:
-        choice = input("Nhập lựa chọn của bạn: ").strip()
+        choice = input("Nhap lua chon cua ban: ").strip()
         if choice in options:
             return choice
-        print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
+        print("Lua chon khong hop le.")
 
 
 def get_delay_input(default: int = 50) -> int:
@@ -135,7 +136,33 @@ def main():
     if metrics:
         print_summary(metrics, scen_name, algo_name)
     else:
-        print("\nKhông thu thập được dữ liệu mô phỏng.")
+        print("Khong co du lieu.")
+
+
+def main():
+    print("==================================================")
+    print("      SUMO INTERACTIVE SIMULATION WATCHER          ")
+    print("==================================================")
+
+    scen_key   = choose_or_default("CHON KICH BAN", TRAFFIC_OPTIONS, '2')
+    algo_key   = choose_or_default("CHON THUAT TOAN", ALGO_OPTIONS, '2')
+    scen_name, scale = TRAFFIC_OPTIONS[scen_key]
+    algo_name  = ALGO_OPTIONS[algo_key]
+    algo       = ALGO_MAP[algo_key]
+
+    if INTERACTIVE:
+        raw = input("Do tre (ms, mac dinh 50): ").strip()
+        delay = int(raw) if raw.isdigit() else 50
+    else:
+        delay = 50
+
+    print(f"\n  Kich ban : {scen_name}")
+    print(f"  Thuat toan: {algo_name}")
+    print(f"  Do tre   : {delay} ms")
+    print("==================================================")
+
+    run_simulation(scale, algo, delay)
+
 
 
 if __name__ == '__main__':
