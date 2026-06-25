@@ -22,16 +22,20 @@ def main():
     tmc_df = pd.read_csv(tmc_path)
     tracks_df = pd.read_csv(tracks_path)
     
-    # 1. Find the first frame for each track_id
-    print("Calculating departure times from tracking frames...")
-    first_frames = tracks_df.groupby('track_id')['frame'].min().reset_index()
-    first_frames.rename(columns={'frame': 'first_frame'}, inplace=True)
+    # 1. Find the first frame and corresponding lane for each track_id
+    print("Calculating departure times and lanes from tracking frames...")
+    sorted_tracks = tracks_df.sort_values(by=['track_id', 'frame'])
+    first_rows = sorted_tracks.drop_duplicates(subset=['track_id'], keep='first')
     
-    # 2. Merge with tmc_df to get routes, classes, and directions
-    merged_df = pd.merge(tmc_df, first_frames, on='track_id', how='left')
+    first_info = first_rows[['track_id', 'frame', 'lane']].copy()
+    first_info.rename(columns={'frame': 'first_frame', 'lane': 'start_lane'}, inplace=True)
     
-    # Handle any potential missing first_frame (fill with 0 as fallback)
+    # 2. Merge with tmc_df to get routes, classes, directions, and start_lane
+    merged_df = pd.merge(tmc_df, first_info, on='track_id', how='left')
+    
+    # Handle any potential missing first_frame or lane (fill with defaults)
     merged_df['first_frame'] = merged_df['first_frame'].fillna(0).astype(int)
+    merged_df['start_lane'] = merged_df['start_lane'].fillna(1).astype(int)
     
     # Calculate departure time in seconds (FPS = 30)
     merged_df['depart_time'] = merged_df['first_frame'] / 30.0
@@ -81,12 +85,15 @@ def main():
     
     # Append vehicle types (vTypes)
     vtypes = [
-        ET.Element('vType', id='standard_car', accel='2.6', decel='4.5', length='4.5', minGap='2.0', maxSpeed='13.41',
-                   sigma='0.5', speedFactor='1.0', jmIgnoreKeepClearTime='5', jmDriveAfterYellowTime='1.0', jmTimegapMinor='1.0'),
-        ET.Element('vType', id='truck', accel='1.0', decel='4.0', length='10.0', minGap='2.5', maxSpeed='10.0',
-                   sigma='0.3', speedFactor='0.9', jmIgnoreKeepClearTime='5', jmDriveAfterYellowTime='1.0', jmTimegapMinor='1.5'),
-        ET.Element('vType', id='motorcycle', accel='2.5', decel='5.0', length='2.2', minGap='1.2', maxSpeed='13.41',
-                   sigma='0.5', speedFactor='1.1', jmIgnoreKeepClearTime='3', jmDriveAfterYellowTime='1.0', jmTimegapMinor='0.8')
+        ET.Element('vType', id='standard_car', accel='2.6', decel='4.8', emergencyDecel='12.0', apparentDecel='4.8', tau='0.8',
+                   length='4.5', minGap='2.0', maxSpeed='11.0', sigma='0.1', speedFactor='1.0', speedDev='0.0',
+                   jmIgnoreKeepClearTime='5', jmDriveAfterYellowTime='3.0', jmTimegapMinor='1.0'),
+        ET.Element('vType', id='truck', accel='1.0', decel='4.0', emergencyDecel='9.0', apparentDecel='4.0', tau='1.0',
+                   length='10.0', minGap='2.5', maxSpeed='10.0', sigma='0.1', speedFactor='0.9', speedDev='0.0',
+                   jmIgnoreKeepClearTime='5', jmDriveAfterYellowTime='2.0', jmTimegapMinor='1.5'),
+        ET.Element('vType', id='motorcycle', accel='2.5', decel='5.2', emergencyDecel='13.0', apparentDecel='5.2', tau='0.7',
+                   length='2.2', minGap='1.2', maxSpeed='11.0', sigma='0.1', speedFactor='1.1', speedDev='0.0',
+                   jmIgnoreKeepClearTime='3', jmDriveAfterYellowTime='3.0', jmTimegapMinor='0.8')
     ]
     for vt in vtypes:
         root.append(vt)
@@ -123,6 +130,7 @@ def main():
         movement = row['movement']
         vehicle_class = row['class']
         depart_time = row['depart_time']
+        start_lane = row['start_lane']
         
         route_key = (direction, movement)
         route_id = route_mapping.get(route_key)
@@ -134,12 +142,15 @@ def main():
             
         vtype_id = class_mapping.get(vehicle_class, 'standard_car')
         
+        # Map 1-indexed lane from CSV to 0-indexed lane in SUMO (min 0)
+        depart_lane = max(0, int(start_lane) - 1)
+        
         veh_elem = ET.Element('vehicle')
         veh_elem.set('id', f'veh_{track_id}')
         veh_elem.set('type', vtype_id)
         veh_elem.set('route', route_id)
         veh_elem.set('depart', f"{depart_time:.2f}")
-        veh_elem.set('departLane', 'best')
+        veh_elem.set('departLane', str(depart_lane))
         veh_elem.set('departSpeed', 'desired')
         
         root.append(veh_elem)
@@ -176,7 +187,7 @@ def main():
     </time>
     <processing>
         <!-- Teleport vehicles stuck longer than 120s to prevent permanent deadlock -->
-        <time-to-teleport value="120"/>
+        <time-to-teleport value="-1"/>
 
         <!-- After 10s of waiting, ignore vehicles blocking the junction interior -->
         <ignore-junction-blocker value="10"/>

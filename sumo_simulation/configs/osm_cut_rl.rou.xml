@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <vType id="standard_car" accel="2.6" decel="4.5" length="4.5" minGap="2.0" maxSpeed="13.41" sigma="0.5" speedFactor="1.0" jmIgnoreKeepClearTime="5" jmDriveAfterYellowTime="1.0" jmTimegapMinor="1.0" />
-    <vType id="truck"        accel="1.0" decel="4.0" length="10.0" minGap="2.5" maxSpeed="10.0" sigma="0.3" speedFactor="0.9" jmIgnoreKeepClearTime="5" jmDriveAfterYellowTime="1.0" jmTimegapMinor="1.5" />
-    <vType id="motorcycle"   accel="2.5" decel="5.0" length="2.2" minGap="1.2" maxSpeed="13.41" sigma="0.5" speedFactor="1.1" jmIgnoreKeepClearTime="3" jmDriveAfterYellowTime="1.0" jmTimegapMinor="0.8" />
+    <vType id="standard_car" accel="2.6" decel="4.8" emergencyDecel="12.0" apparentDecel="4.8" tau="0.8" length="4.5" minGap="2.0" maxSpeed="11.0" sigma="0.1" speedFactor="1.0" speedDev="0.0" jmIgnoreKeepClearTime="5" jmDriveAfterYellowTime="3.0" jmTimegapMinor="1.0" />
+    <vType id="truck"        accel="1.0" decel="4.0" emergencyDecel="9.0" apparentDecel="4.0" tau="1.0" length="10.0" minGap="2.5" maxSpeed="10.0" sigma="0.1" speedFactor="0.9" speedDev="0.0" jmIgnoreKeepClearTime="5" jmDriveAfterYellowTime="2.0" jmTimegapMinor="1.5" />
+    <vType id="motorcycle"   accel="2.5" decel="5.2" emergencyDecel="13.0" apparentDecel="5.2" tau="0.7" length="2.2" minGap="1.2" maxSpeed="11.0" sigma="0.1" speedFactor="1.1" speedDev="0.0" jmIgnoreKeepClearTime="3" jmDriveAfterYellowTime="3.0" jmTimegapMinor="0.8" />
 
     <route id="E_N" edges="428067759#0 -428067750#1" />
     <route id="E_S" edges="428067759#0 428067754#0" />

@@ -1,22 +1,9 @@
-"""
-core/reporting.py
-=================
-Tất cả logic báo cáo và trực quan hóa:
-  - calculate_los()         — Tính mức dịch vụ LOS (A–F)
-  - save_csv()              — Xuất kết quả ra file CSV
-  - generate_bar_charts()   — Biểu đồ bar đơn (dùng cho real comparison)
-  - generate_grouped_charts() — Biểu đồ grouped bar (dùng cho scenario comparison)
-"""
-
 import os
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-# -------------------------------------------------------------------
-# Hằng số giao diện (màu, chiến lược)
-# -------------------------------------------------------------------
 STRATEGIES   = ['FT', 'AC', 'MP']
 COLORS       = ['#3498db', '#9b59b6', '#e67e22']   # Blue, Purple, Orange
 
@@ -28,9 +15,6 @@ METRIC_LABELS = {
 }
 
 
-# -------------------------------------------------------------------
-# Level of Service (LOS)
-# -------------------------------------------------------------------
 def calculate_los(avg_delay: float) -> str:
     """Tính mức dịch vụ LOS theo HCM dựa trên thời gian trễ trung bình.
     
@@ -53,18 +37,7 @@ def calculate_los(avg_delay: float) -> str:
     else:
         return 'F'
 
-
-# -------------------------------------------------------------------
-# CSV Export
-# -------------------------------------------------------------------
 def save_real_comparison_csv(results: dict, csv_path: str) -> None:
-    """Lưu kết quả so sánh real-world ra CSV (bao gồm std nếu có).
-
-    Args:
-        results:  dict {strategy: metrics_dict}  — có thể chứa key 'std_*'
-        csv_path: Đường dẫn file CSV xuất ra
-    """
-    # Kiểm tra có dữ liệu std không (chạy nhiều seed)
     first = results[STRATEGIES[0]]
     has_std = 'std_avg_queue' in first
 
@@ -136,17 +109,7 @@ def save_scenario_comparison_csv(results: dict, csv_path: str) -> None:
     print(f"  CSV saved → {csv_path}")
 
 
-# -------------------------------------------------------------------
-# Charts
-# -------------------------------------------------------------------
 def generate_bar_charts(results: dict, outputs_dir: str, prefix: str = 'real_comparison') -> None:
-    """Vẽ biểu đồ bar đơn cho mỗi metric (dùng cho real comparison).
-    
-    Args:
-        results:     dict {strategy: metrics_dict}
-        outputs_dir: Thư mục lưu ảnh
-        prefix:      Tiền tố tên file ảnh
-    """
     for metric_key, label in METRIC_LABELS.items():
         values = [results[strat][metric_key] for strat in STRATEGIES]
         _save_bar_chart(
@@ -162,13 +125,6 @@ def generate_bar_charts(results: dict, outputs_dir: str, prefix: str = 'real_com
 
 
 def generate_grouped_charts(results: dict, outputs_dir: str, prefix: str = 'scenario_comparison') -> None:
-    """Vẽ biểu đồ grouped bar (3 kịch bản × 3 thuật toán).
-    
-    Args:
-        results:     dict {(scale, strategy): metrics_dict}
-        outputs_dir: Thư mục lưu ảnh
-        prefix:      Tiền tố tên file ảnh
-    """
     scales = [0.5, 1.0, 1.5]
     scenario_labels = ['Thấp (Scale 0.5)', 'Trung bình (Scale 1.0)', 'Cao (Scale 1.5)']
     x = np.arange(len(scales))

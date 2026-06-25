@@ -1,18 +1,3 @@
-"""
-core/controllers.py
-===================
-Logic điều khiển đèn tín hiệu giao thông.
-
-Mỗi controller được đóng gói trong một class riêng, nhận trạng thái
-hiện tại và trả về trạng thái mới. Không phụ thuộc vào biến global.
-
-Classes:
-    ControllerState   — Dữ liệu trạng thái pha hiện tại (dataclass)
-    FixedTimeController   — Giữ nguyên lịch SUMO mặc định
-    MaxPressureController — Chọn pha có áp suất lớn nhất
-    ActuatedController    — Kéo dài pha nếu có xe, ngược lại chuyển pha
-"""
-
 import numpy as np
 import traci
 
@@ -28,13 +13,7 @@ from core.config import (
 
 
 class ControllerState:
-    """Trạng thái bộ điều khiển pha đèn.
-    
-    Attributes:
-        current_green_idx: Chỉ số pha xanh hiện tại trong GREEN_PHASES (0–3)
-        green_timer:        Số bước đã ở pha xanh hiện tại
-        yellow_timer:       Số bước còn lại ở pha vàng (0 = không có vàng)
-    """
+    """Trạng thái bộ điều khiển pha đèn."""
     def __init__(self, initial_green_idx: int = 0):
         self.current_green_idx: int = initial_green_idx
         self.green_timer: int = 0
@@ -51,12 +30,7 @@ class FixedTimeController:
 
 
 class MaxPressureController:
-    """Max-Pressure (MP): Chọn pha có áp suất (incoming - outgoing) lớn nhất.
-    
-    Công thức: pressure(p) = Σ incoming_queue(p) − Σ outgoing_queue(p)
-    Chuyển pha khi pha hiện tại không còn là pha có áp suất cao nhất
-    hoặc khi đã vượt quá MAX_GREEN_STEPS.
-    """
+    """Max-Pressure (MP): Chọn pha có áp suất (incoming - outgoing) lớn nhất."""
 
     @staticmethod
     def step(state: ControllerState) -> ControllerState:
@@ -98,9 +72,7 @@ class MaxPressureController:
 
 
 class ActuatedController:
-    """Actuated Control (AC): Kéo dài pha xanh nếu detector phát hiện xe;
-    chuyển pha vòng tròn khi không có xe hoặc vượt MAX_GREEN_STEPS.
-    """
+    """Actuated Control (AC): Kéo dài pha xanh nếu detector phát hiện xe;"""
 
     @staticmethod
     def step(state: ControllerState) -> ControllerState:
@@ -124,10 +96,6 @@ class ActuatedController:
 
         return state
 
-
-# -------------------------------------------------------------------
-# Factory function để lấy controller theo tên
-# -------------------------------------------------------------------
 _CONTROLLER_MAP = {
     'FT': FixedTimeController,
     'MP': MaxPressureController,
@@ -135,17 +103,6 @@ _CONTROLLER_MAP = {
 }
 
 def get_controller(control_type: str):
-    """Trả về class controller tương ứng với tên.
-    
-    Args:
-        control_type: 'FT', 'MP', hoặc 'AC'
-    
-    Returns:
-        Controller class (FixedTimeController | MaxPressureController | ActuatedController)
-    
-    Raises:
-        ValueError: Nếu control_type không hợp lệ
-    """
     controller = _CONTROLLER_MAP.get(control_type.upper())
     if controller is None:
         raise ValueError(f"Unknown control_type '{control_type}'. Choose from: {list(_CONTROLLER_MAP.keys())}")

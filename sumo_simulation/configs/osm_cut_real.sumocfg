@@ -13,7 +13,7 @@
     </time>
     <processing>
         <!-- Teleport vehicles stuck longer than 120s to prevent permanent deadlock -->
-        <time-to-teleport value="120"/>
+        <time-to-teleport value="-1"/>
 
         <!-- After 10s of waiting, ignore vehicles blocking the junction interior -->
         <ignore-junction-blocker value="10"/>
