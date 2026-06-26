@@ -11,6 +11,7 @@ from core.simulator import run_simulation_interactive
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CFG_RL     = os.path.join(SCRIPT_DIR, 'configs', 'osm_cut_rl.sumocfg')
 CFG_REAL   = os.path.join(SCRIPT_DIR, 'configs', 'osm_cut_real.sumocfg')
+CFG_RL_REAL= os.path.join(SCRIPT_DIR, 'configs', 'osm_cut_rl_real.sumocfg')
 
 def get_menu_choice(title: str, options: dict) -> str:
     print(f"\n=== {title} ===")
